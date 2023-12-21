@@ -18,36 +18,73 @@
         android:fontFamily="@font/aleo"
     />
 
-    <LinearLayout
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Détails du demandeur"
+            android:textSize="26sp"
+            android:layout_marginHorizontal="35dp"
+            android:layout_marginTop="40dp"
+            android:textColor="@color/orange_secondary"
+            android:fontFamily="@font/aleo"
+            />
+
+    <EditText
+        android:id="@+id/type_identite"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="40dp"
-        android:layout_gravity="bottom">
+        android:hint="Type de pièce d'identité"
+        android:textColorHint="#777"
+        android:background="@drawable/rounded_input"
+        android:paddingHorizontal="20dp"
+        android:paddingVertical="15dp"
+        android:layout_marginTop="23dp"
+        android:layout_marginHorizontal="26dp"
+        android:fontFamily="@font/aleo"
+        />
+
+    <EditText
+        android:id="@+id/num_identite"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="N° de la pièce d'identité"
+        android:textColorHint="#777"
+        android:background="@drawable/rounded_input"
+        android:paddingHorizontal="20dp"
+        android:paddingVertical="15dp"
+        android:layout_marginTop="23dp"
+        android:layout_marginHorizontal="26dp"
+        android:fontFamily="@font/aleo"
+        android:inputType="number"
+        />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Pèce d’identité"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        android:background="@drawable/button_background"
+        android:drawableRight="@drawable/upload"
+        android:drawableEnd="@drawable/upload"
+        android:paddingHorizontal="22dp"
+        android:paddingVertical="15dp"
+        android:layout_marginTop="23dp"
+        android:layout_marginHorizontal="26dp"
+        android:gravity="start|center_vertical"
+        android:fontFamily="@font/aleo"
+        android:textAllCaps="false"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Détails de l’entreprise"
         android:textSize="26sp"
+        android:layout_marginTop="40dp"
         android:layout_marginStart="35dp"
         android:textColor="@color/orange_secondary"
         android:fontFamily="@font/aleo"
-    />
-        <Space
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_weight="1"/>
-
-        <ImageButton
-            android:id="@+id/faqButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/faq"
-            android:contentDescription="FAQ"
-            android:background="@android:color/transparent"
-            android:layout_marginEnd="35dp"/>
-    </LinearLayout>
+        />
 
     <EditText
         android:id="@+id/company_name"
@@ -78,34 +115,6 @@
         />
 
     <EditText
-        android:id="@+id/telephone"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Numéro de téléphone"
-        android:textColorHint="#777"
-        android:background="@drawable/rounded_input"
-        android:paddingHorizontal="20dp"
-        android:paddingVertical="15dp"
-        android:layout_marginTop="23dp"
-        android:layout_marginHorizontal="26dp"
-        android:fontFamily="@font/aleo"
-    />
-
-    <EditText
-        android:id="@+id/email"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="E-mail"
-        android:textColorHint="#777"
-        android:background="@drawable/rounded_input"
-        android:paddingHorizontal="20dp"
-        android:paddingVertical="15dp"
-        android:layout_marginTop="23dp"
-        android:layout_marginHorizontal="26dp"
-        android:fontFamily="@font/aleo"
-    />
-
-    <EditText
         android:id="@+id/activite"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -118,88 +127,10 @@
         android:paddingVertical="15dp"
         android:textColorHint="#777" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Détails du demandeur"
-        android:textSize="26sp"
-        android:layout_marginTop="40dp"
-        android:layout_marginHorizontal="35dp"
-        android:textColor="@color/orange_secondary"
-        android:fontFamily="@font/aleo"
-        />
-
-    <EditText
-        android:id="@+id/full_name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Nom complet"
-        android:textColorHint="#777"
-        android:background="@drawable/rounded_input"
-        android:paddingHorizontal="20dp"
-        android:paddingVertical="15dp"
-        android:layout_marginTop="23dp"
-        android:layout_marginHorizontal="26dp"
-        android:fontFamily="@font/aleo"
-        />
-
-    <EditText
-        android:id="@+id/naissance"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Date de naissance"
-        android:textColorHint="#777"
-        android:background="@drawable/rounded_input"
-        android:paddingHorizontal="20dp"
-        android:paddingVertical="15dp"
-        android:layout_marginTop="23dp"
-        android:layout_marginHorizontal="26dp"
-        android:fontFamily="@font/aleo"
-        />
-
-    <EditText
-        android:id="@+id/nationalite"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Nationalité"
-        android:textColorHint="#777"
-        android:background="@drawable/rounded_input"
-        android:paddingHorizontal="20dp"
-        android:paddingVertical="15dp"
-        android:layout_marginTop="23dp"
-        android:layout_marginHorizontal="26dp"
-        android:fontFamily="@font/aleo"
-        />
-
-    <EditText
-        android:id="@+id/num_identite"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Numéro de la pièce d'identité"
-        android:textColorHint="#777"
-        android:background="@drawable/rounded_input"
-        android:paddingHorizontal="20dp"
-        android:paddingVertical="15dp"
-        android:layout_marginTop="23dp"
-        android:layout_marginHorizontal="26dp"
-        android:fontFamily="@font/aleo"
-        />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Détails du demandeur"
-        android:textSize="26sp"
-        android:layout_marginTop="40dp"
-        android:layout_marginHorizontal="35dp"
-        android:textColor="@color/orange_secondary"
-        android:fontFamily="@font/aleo"
-        />
-
     <androidx.appcompat.widget.AppCompatButton
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Pèce d’identité"
+        android:text="Contrat de bail/propriété"
         android:textSize="18sp"
         android:textColor="@color/black"
         android:background="@drawable/button_background"
@@ -213,10 +144,24 @@
         android:fontFamily="@font/aleo"
         android:textAllCaps="false"/>
 
+    <EditText
+        android:id="@+id/num_fiscale"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="26dp"
+        android:layout_marginTop="23dp"
+        android:background="@drawable/rounded_input"
+        android:fontFamily="@font/aleo"
+        android:hint="N° d'identification fiscale"
+        android:paddingHorizontal="20dp"
+        android:paddingVertical="15dp"
+        android:textColorHint="#777"
+        android:inputType="number" />
+
     <androidx.appcompat.widget.AppCompatButton
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Justificatif de domicile"
+        android:text="Carte fiscale"
         android:textSize="18sp"
         android:textColor="@color/black"
         android:background="@drawable/button_background"
@@ -230,27 +175,23 @@
         android:fontFamily="@font/aleo"
         android:textAllCaps="false"/>
 
-    <androidx.appcompat.widget.AppCompatButton
+    <EditText
+        android:id="@+id/RIB"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Certificat de formation"
-        android:textSize="18sp"
-        android:textColor="@color/black"
-        android:background="@drawable/button_background"
-        android:drawableRight="@drawable/upload"
-        android:drawableEnd="@drawable/upload"
-        android:paddingHorizontal="22dp"
-        android:paddingVertical="15dp"
-        android:layout_marginTop="23dp"
         android:layout_marginHorizontal="26dp"
-        android:gravity="start|center_vertical"
+        android:layout_marginTop="23dp"
+        android:background="@drawable/rounded_input"
         android:fontFamily="@font/aleo"
-        android:textAllCaps="false"/>
+        android:hint="RIB"
+        android:paddingHorizontal="20dp"
+        android:paddingVertical="15dp"
+        android:textColorHint="#777" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Contrat de bail"
+        android:text="Chèque barré"
         android:textSize="18sp"
         android:textColor="@color/black"
         android:background="@drawable/button_background"
