@@ -87,7 +87,7 @@
         />
 
     <EditText
-        android:id="@+id/company_name"
+        android:id="@+id/nom_entreprise"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Nom de l'entreprise"
@@ -176,7 +176,7 @@
         android:textAllCaps="false"/>
 
     <EditText
-        android:id="@+id/RIB"
+        android:id="@+id/rib"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="26dp"
@@ -186,7 +186,8 @@
         android:hint="RIB"
         android:paddingHorizontal="20dp"
         android:paddingVertical="15dp"
-        android:textColorHint="#777" />
+        android:textColorHint="#777"
+        android:inputType="number" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:layout_width="match_parent"
@@ -231,6 +232,7 @@
         android:textColor="@color/black"
         android:fontFamily="@font/aleo"
         android:layout_gravity="center"
+        android:onClick="soumettreDemande"
     />
 
 </LinearLayout>

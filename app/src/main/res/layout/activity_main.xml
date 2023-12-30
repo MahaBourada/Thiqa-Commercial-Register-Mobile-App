@@ -52,7 +52,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_marginHorizontal="35dp"
         android:layout_marginVertical="20dp"
         android:background="@drawable/rounded_back1"
@@ -68,6 +68,19 @@
             android:textColor="@color/black"
             android:textSize="26sp" />
 
+        <TextView
+            android:id="@+id/empty_list"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="80dp"
+            android:fontFamily="@font/aleo"
+            android:text="Pas de demandes"
+            android:textColor="@color/orange_secondary"
+            android:textSize="22sp"
+            android:visibility="gone" />
+
+
         <ListView
             android:id="@+id/demande"
             android:layout_width="match_parent"
@@ -75,8 +88,7 @@
             android:layout_marginHorizontal="15dp"
             android:layout_marginVertical="20dp"
             android:divider="@android:color/transparent"
-            android:dividerHeight="15sp" />
-
+            android:dividerHeight="15sp"/>
     </LinearLayout>
     </LinearLayout>
 

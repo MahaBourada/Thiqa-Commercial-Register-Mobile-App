@@ -11,27 +11,28 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import com.example.miniprojet.model.Demandes;
+import com.example.miniprojet.model.DemandesHandler;
+
 import java.util.List;
 
 public class CustomDemandeAdapter extends BaseAdapter {
     private Context context;
-    private String[] entreprises;
-    private String[] etats;
+    private List<Demandes> demandesList;
 
-    public CustomDemandeAdapter(Context context, String[] entreprises, String[] etats) {
+    public CustomDemandeAdapter(Context context, List<Demandes> demandesList) {
         this.context = context;
-        this.entreprises = entreprises;
-        this.etats = etats;
+        this.demandesList = demandesList;
     }
 
     @Override
     public int getCount() {
-        return entreprises.length;
+        return demandesList.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return entreprises[position];
+        return demandesList.get(position);
     }
 
     @Override
@@ -48,19 +49,13 @@ public class CustomDemandeAdapter extends BaseAdapter {
         TextView entrepriseName = convertView.findViewById(R.id.entreprise);
         TextView etat = convertView.findViewById(R.id.etat);
 
-        // Set social media name
-        entrepriseName.setText(entreprises[position]);
+        Demandes demande = demandesList.get(position);
 
-        // Set social media link
-        etat.setText(etats[position]);
+        // Set entreprise name
+        entrepriseName.setText(demande.getNomEntreprise());
 
-        // Set onClickListener to open social media link
-        convertView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openSocialMediaLink(etats[position]);
-            }
-        });
+        // Set etat
+        etat.setText(demande.getEtat());
 
         return convertView;
     }
