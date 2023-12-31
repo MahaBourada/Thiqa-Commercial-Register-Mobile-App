@@ -34,7 +34,7 @@ public class SupportActivity extends AppCompatActivity {
 
                 if(emailObjet.trim().equals("") || emailContenu.trim().equals("")) {
                     Toast.makeText(getBaseContext(), "Veuillez compléter les champs manquants", Toast.LENGTH_SHORT).show();
-                }
+                } else {
                 Intent intent = new Intent(Intent.ACTION_SEND);
 
                 intent.putExtra(Intent.EXTRA_EMAIL, new String[]{emailDestinataire});
@@ -44,6 +44,7 @@ public class SupportActivity extends AppCompatActivity {
                 intent.setType("message/rfc822");
 
                 startActivity(Intent.createChooser(intent, "Choose an Email Client : "));
+                }
             }
         });
 
