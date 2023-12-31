@@ -49,7 +49,7 @@ public class DemandeActivity extends AppCompatActivity {
 
             Toast.makeText(getBaseContext(), "Demande enregistrée", Toast.LENGTH_SHORT).show();
 
-            Intent myintent = new Intent(DemandeActivity.this, MainActivity.class);
+            Intent myintent = new Intent(DemandeActivity.this, DashboardActivity.class);
             startActivity(myintent);
         }
     }
