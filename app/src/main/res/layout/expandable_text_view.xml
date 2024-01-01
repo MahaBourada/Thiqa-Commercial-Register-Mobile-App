@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <TextView
+        android:id="@+id/questionTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:textSize="21sp"
+        android:layout_marginTop="15dp"
+        android:layout_marginHorizontal="45dp"
+        android:fontFamily="@font/aleo"
+        android:drawableRight="@drawable/upload"
+        />
+
+    <TextView
+        android:id="@+id/answerTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:textSize="19sp"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="50dp"
+        android:layout_marginHorizontal="50dp"
+        android:fontFamily="@font/aleo"
+        android:visibility="gone"
+        />
+
+</merge>

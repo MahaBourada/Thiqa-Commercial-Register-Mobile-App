@@ -114,7 +114,7 @@ public class DemandesHandler extends SQLiteOpenHelper {
             do {
                 Demandes contact = new Demandes();
                 contact.setId(Integer.parseInt(cursor.getString(0)));
-                contact.setNomEntreprise(cursor.getString(1));
+                contact.setNomEntreprise(cursor.getString(3));
                 contact.setEtat(cursor.getString(8));
                 // Adding contact to list
                 contactList.add(contact);
