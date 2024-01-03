@@ -12,7 +12,6 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.example.miniprojet.model.Demandes;
-import com.example.miniprojet.model.DemandesHandler;
 
 import java.util.List;
 

@@ -8,8 +8,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import java.util.ArrayList;
 import java.util.List;
-public class DemandesHandler extends SQLiteOpenHelper {
-    private static final int DATABASE_VERSION = 1;
+public class DemandesHelper extends SQLiteOpenHelper {
+    private static final int DATABASE_VERSION = 2;
     private static final String DATABASE_NAME = "RegistreCommerce";
     private static final String TABLE_DEMANDES = "Demandes";
     private static final String KEY_ID = "id";
@@ -22,7 +22,7 @@ public class DemandesHandler extends SQLiteOpenHelper {
     private static final String KEY_RIB = "ribBanque";
     private static final String KEY_ETAT = "etat";
 
-    public DemandesHandler(Context context) {
+    public DemandesHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
         //3rd argument to be passed is CursorFactory instance
     }
@@ -32,7 +32,7 @@ public class DemandesHandler extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         String CREATE_CONTACTS_TABLE = "CREATE TABLE " + TABLE_DEMANDES + "("
-                + KEY_ID + " INTEGER PRIMARY KEY," + KEY_TYPE_IDNT + " TEXT,"
+                + KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + KEY_TYPE_IDNT + " TEXT,"
                 + KEY_NUM_IDNT + " INTEGER," + KEY_NOM + " TEXT," + KEY_ADRESSE
                 + " TEXT," + KEY_ACTIVITY + " TEXT," + KEY_NUM_FISC + " INTEGER,"
                 + KEY_RIB + " INTEGER," + KEY_ETAT + " TEXT" + ")";

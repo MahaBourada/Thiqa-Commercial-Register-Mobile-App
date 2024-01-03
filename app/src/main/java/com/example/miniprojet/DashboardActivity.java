@@ -9,10 +9,9 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.miniprojet.model.Demandes;
-import com.example.miniprojet.model.DemandesHandler;
+import com.example.miniprojet.model.DemandesHelper;
 
 import java.util.List;
 
@@ -25,7 +24,7 @@ public class DashboardActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
 
-        DemandesHandler db = new DemandesHandler(this);
+        DemandesHelper db = new DemandesHelper(this);
         List<Demandes> demandesList = db.getAllDemandes();
 
         ListView listView = findViewById(R.id.demande);
