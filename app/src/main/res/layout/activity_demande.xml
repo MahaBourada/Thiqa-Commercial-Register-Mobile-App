@@ -59,7 +59,7 @@
         />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnChooseFile"
+        android:id="@+id/idntFile"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Pèce d’identité"
@@ -129,6 +129,7 @@
         android:textColorHint="#777" />
 
     <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/contratFile"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Contrat de bail/propriété"
@@ -160,6 +161,7 @@
         android:inputType="number" />
 
     <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/fiscaleFile"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Carte fiscale"
@@ -191,6 +193,7 @@
         android:inputType="number" />
 
     <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/ribFile"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Chèque barré"

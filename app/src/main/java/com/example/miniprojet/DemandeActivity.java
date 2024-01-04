@@ -24,9 +24,19 @@ public class DemandeActivity extends AppCompatActivity {
     private static final int PICK_PDF_REQUEST = 1;
     private EditText typeIdentite, numIdentite, nomEntreprise, adresse, activity, numFiscale, rib;
     private CheckBox declaration;
-    private Button btnChooseFile;
+    private Button idntFile, contratFile, fiscaleFile, ribFile;
     private List<Uri> pdfList;
     private ArrayAdapter<Uri> pdfListAdapter;
+    private static final int PICK_PDF_REQUEST_IDNT = 1; // Use a unique request code
+    private static final int PICK_PDF_REQUEST_CONTRAT = 2; // Use a unique request code
+    private static final int PICK_PDF_REQUEST_FISCALE = 3; // Use a unique request code
+    private static final int PICK_PDF_REQUEST_RIB = 4; // Use a unique request code
+    private Uri idntFileUri;
+    private Uri contratFileUri;
+    private Uri fiscaleFileUri;
+    private Uri ribFileUri;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,35 +52,73 @@ public class DemandeActivity extends AppCompatActivity {
         rib = findViewById(R.id.rib);
 
         declaration = findViewById(R.id.declaration);
-        btnChooseFile = findViewById(R.id.btnChooseFile);
-        btnChooseFile.setOnClickListener(new View.OnClickListener() {
+
+        idntFile = findViewById(R.id.idntFile);
+        idntFile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openFileChooser();
+                openFileChooser(PICK_PDF_REQUEST_IDNT);
+            }
+        });
+
+        contratFile = findViewById(R.id.contratFile);
+        contratFile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openFileChooser(PICK_PDF_REQUEST_CONTRAT);
+            }
+        });
+
+        fiscaleFile = findViewById(R.id.fiscaleFile);
+        fiscaleFile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openFileChooser(PICK_PDF_REQUEST_FISCALE);
+            }
+        });
+
+        ribFile = findViewById(R.id.ribFile);
+        ribFile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openFileChooser(PICK_PDF_REQUEST_RIB);
             }
         });
     }
+    private int currentFileRequestCode; // Add a field to track the current file request code
 
-    private void openFileChooser() {
+    private void openFileChooser(int requestCode) {
         Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
         intent.setType("application/pdf");
-        startActivityForResult(intent, PICK_PDF_REQUEST);
+        currentFileRequestCode = requestCode;
+        startActivityForResult(intent, requestCode);
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == 1 && resultCode == RESULT_OK) {
+        if (resultCode == RESULT_OK && data != null && data.getData() != null) {
             Uri uri = data.getData();
 
-            PdfHelper pdfHelper = new PdfHelper(this);
-            SQLiteDatabase db = pdfHelper.getWritableDatabase();
-            pdfHelper.insertFileUri(uri);
-            db.close();
-            Toast.makeText(this, "File URI saved to database", Toast.LENGTH_SHORT).show();
+            switch (requestCode) {
+                case PICK_PDF_REQUEST_IDNT:
+                    idntFileUri = uri;
+                    break;
+                case PICK_PDF_REQUEST_CONTRAT:
+                    contratFileUri = uri;
+                    break;
+                case PICK_PDF_REQUEST_FISCALE:
+                    fiscaleFileUri = uri;
+                    break;
+                case PICK_PDF_REQUEST_RIB:
+                    ribFileUri = uri;
+                    break;
+            }
+
+            Toast.makeText(this, "Fichier enregistré!", Toast.LENGTH_SHORT).show();
         } else {
-            Toast.makeText(this, "Didn't work", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Erreur: Réessayez", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -85,9 +133,20 @@ public class DemandeActivity extends AppCompatActivity {
         } else {
             DemandesHelper db = new DemandesHelper(this);
 
-            db.addDemande(new Demandes(widgetToString(typeIdentite), widgetToInt(numIdentite), widgetToString(nomEntreprise),
-                    widgetToString(adresse), widgetToString(activity), widgetToInt(numFiscale), widgetToInt(rib)
-                    , "En cours de traitement"));
+            db.addDemande(new Demandes(
+                    widgetToString(typeIdentite),
+                    widgetToInt(numIdentite),
+                    widgetToString(nomEntreprise),
+                    widgetToString(adresse),
+                    widgetToString(activity),
+                    widgetToInt(numFiscale),
+                    widgetToInt(rib),
+                    "En cours de traitement",
+                    idntFileUri != null ? idntFileUri.toString() : null,
+                    contratFileUri != null ? contratFileUri.toString() : null,
+                    fiscaleFileUri != null ? fiscaleFileUri.toString() : null,
+                    ribFileUri != null ? ribFileUri.toString() : null
+            ));
 
             Toast.makeText(getBaseContext(), "Demande enregistrée", Toast.LENGTH_SHORT).show();
 

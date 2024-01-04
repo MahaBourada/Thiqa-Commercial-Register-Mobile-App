@@ -5,37 +5,42 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.net.Uri;
 
 import java.util.ArrayList;
 import java.util.List;
 public class DemandesHelper extends SQLiteOpenHelper {
-    private static final int DATABASE_VERSION = 2;
+    private static final int DATABASE_VERSION = 3;
     private static final String DATABASE_NAME = "RegistreCommerce";
     private static final String TABLE_DEMANDES = "Demandes";
-    private static final String KEY_ID = "id";
-    private static final String KEY_TYPE_IDNT = "typeIdentite";
-    private static final String KEY_NUM_IDNT = "numIdentite";
-    private static final String KEY_NOM = "nomEntreprise";
-    private static final String KEY_ADRESSE = "adresse";
-    private static final String KEY_ACTIVITY = "activity";
-    private static final String KEY_NUM_FISC = "numFiscale";
-    private static final String KEY_RIB = "ribBanque";
-    private static final String KEY_ETAT = "etat";
+    private static final String COLUMN_ID = "id";
+    private static final String COLUMN_TYPE_IDNT = "typeIdentite";
+    private static final String COLUMN_NUM_IDNT = "numIdentite";
+    private static final String COLUMN_NOM = "nomEntreprise";
+    private static final String COLUMN_ADRESSE = "adresse";
+    private static final String COLUMN_ACTIVITY = "activity";
+    private static final String COLUMN_NUM_FISC = "numFiscale";
+    private static final String COLUMN_RIB = "ribBanque";
+    private static final String COLUMN_ETAT = "etat";
+    private static final String COLUMN_IDNT_URI = "idntUri";
+    private static final String COLUMN_CONTRAT_URI = "cntrtUri";
+    private static final String COLUMN_FISCALE_URI = "fiscaleUri";
+    private static final String COLUMN_RIB_URI = "ribUri";
 
     public DemandesHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
         //3rd argument to be passed is CursorFactory instance
     }
 
-
     // Creating Tables
     @Override
     public void onCreate(SQLiteDatabase db) {
         String CREATE_CONTACTS_TABLE = "CREATE TABLE " + TABLE_DEMANDES + "("
-                + KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + KEY_TYPE_IDNT + " TEXT,"
-                + KEY_NUM_IDNT + " INTEGER," + KEY_NOM + " TEXT," + KEY_ADRESSE
-                + " TEXT," + KEY_ACTIVITY + " TEXT," + KEY_NUM_FISC + " INTEGER,"
-                + KEY_RIB + " INTEGER," + KEY_ETAT + " TEXT" + ")";
+                + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + COLUMN_TYPE_IDNT + " TEXT,"
+                + COLUMN_NUM_IDNT + " INTEGER," + COLUMN_NOM + " TEXT," + COLUMN_ADRESSE
+                + " TEXT," + COLUMN_ACTIVITY + " TEXT," + COLUMN_NUM_FISC + " INTEGER,"
+                + COLUMN_RIB + " INTEGER," + COLUMN_ETAT + " TEXT," + COLUMN_IDNT_URI + " TEXT,"
+                + COLUMN_CONTRAT_URI + " TEXT," + COLUMN_FISCALE_URI + " TEXT, " + COLUMN_RIB_URI + " TEXT" + ")";
         db.execSQL(CREATE_CONTACTS_TABLE);
     }
     // Upgrading database
@@ -50,14 +55,18 @@ public class DemandesHelper extends SQLiteOpenHelper {
     public void addDemande(Demandes demande) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put(KEY_TYPE_IDNT, demande.getTypeIdentite());
-        values.put(KEY_NUM_IDNT, demande.getNumIdentite());
-        values.put(KEY_NOM, demande.getNomEntreprise());
-        values.put(KEY_ADRESSE, demande.getAdresse());
-        values.put(KEY_ACTIVITY, demande.getActivity());
-        values.put(KEY_NUM_FISC, demande.getNumFiscale());
-        values.put(KEY_RIB, demande.getRibBanque());
-        values.put(KEY_ETAT, demande.getEtat());
+        values.put(COLUMN_TYPE_IDNT, demande.getTypeIdentite());
+        values.put(COLUMN_NUM_IDNT, demande.getNumIdentite());
+        values.put(COLUMN_NOM, demande.getNomEntreprise());
+        values.put(COLUMN_ADRESSE, demande.getAdresse());
+        values.put(COLUMN_ACTIVITY, demande.getActivity());
+        values.put(COLUMN_NUM_FISC, demande.getNumFiscale());
+        values.put(COLUMN_RIB, demande.getRibBanque());
+        values.put(COLUMN_ETAT, demande.getEtat());
+        values.put(COLUMN_IDNT_URI, demande.getIdentiteUri());
+        values.put(COLUMN_CONTRAT_URI, demande.getContratEndroitUri());
+        values.put(COLUMN_FISCALE_URI, demande.getFiscaleUri());
+        values.put(COLUMN_RIB_URI, demande.getRibUri());
         // Inserting Row
         db.insert(TABLE_DEMANDES, null, values);
         //2nd argument is String containing nullColumnHack
@@ -66,8 +75,8 @@ public class DemandesHelper extends SQLiteOpenHelper {
     // code to get the single contact
     Demandes getDemande(int id) {
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.query(TABLE_DEMANDES, new String[] { KEY_ID,
-                        KEY_NOM, KEY_ETAT }, KEY_ID + "=?",
+        Cursor cursor = db.query(TABLE_DEMANDES, new String[] { COLUMN_ID,
+                        COLUMN_NOM, COLUMN_ETAT }, COLUMN_ID + "=?",
                 new String[] { String.valueOf(id) }, null, null, null, null);
         if (cursor != null)
             cursor.moveToFirst();
@@ -75,7 +84,8 @@ public class DemandesHelper extends SQLiteOpenHelper {
                 cursor.getString(1), Integer.parseInt(cursor.getString(2)),
                 cursor.getString(3), cursor.getString(4),
                 cursor.getString(5), Integer.parseInt(cursor.getString(6)),
-                Integer.parseInt(cursor.getString(7)), cursor.getString(8));
+                Integer.parseInt(cursor.getString(7)), cursor.getString(8),
+                cursor.getString(9), cursor.getString(10), cursor.getString(11), cursor.getString(12));
         // return contact
         return user;
     }
@@ -83,8 +93,8 @@ public class DemandesHelper extends SQLiteOpenHelper {
     // Add a method to get a user by username
     public Demandes getDemandeByNom(String username) {
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.query(TABLE_DEMANDES, new String[]{KEY_ID, KEY_NOM, KEY_ETAT},
-                KEY_NOM + "=?", new String[]{username}, null, null, null, null);
+        Cursor cursor = db.query(TABLE_DEMANDES, new String[]{COLUMN_ID, COLUMN_NOM, COLUMN_ETAT},
+                COLUMN_NOM + "=?", new String[]{username}, null, null, null, null);
 
         Demandes demande = null;
 
@@ -94,7 +104,8 @@ public class DemandesHelper extends SQLiteOpenHelper {
                         cursor.getString(1), Integer.parseInt(cursor.getString(2)),
                         cursor.getString(3), cursor.getString(4),
                         cursor.getString(5), Integer.parseInt(cursor.getString(6)),
-                        Integer.parseInt(cursor.getString(7)), cursor.getString(8));
+                        Integer.parseInt(cursor.getString(7)), cursor.getString(8),
+                        cursor.getString(9), cursor.getString(10), cursor.getString(11), cursor.getString(12));
             }
             cursor.close();
         }
@@ -128,23 +139,27 @@ public class DemandesHelper extends SQLiteOpenHelper {
     public int updateDemande(Demandes demande) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put(KEY_TYPE_IDNT, demande.getTypeIdentite());
-        values.put(KEY_NUM_IDNT, demande.getNumIdentite());
-        values.put(KEY_NOM, demande.getNomEntreprise());
-        values.put(KEY_ADRESSE, demande.getAdresse());
-        values.put(KEY_ACTIVITY, demande.getActivity());
-        values.put(KEY_NUM_FISC, demande.getNumFiscale());
-        values.put(KEY_RIB, demande.getRibBanque());
-        values.put(KEY_ETAT, demande.getEtat());
+        values.put(COLUMN_TYPE_IDNT, demande.getTypeIdentite());
+        values.put(COLUMN_NUM_IDNT, demande.getNumIdentite());
+        values.put(COLUMN_NOM, demande.getNomEntreprise());
+        values.put(COLUMN_ADRESSE, demande.getAdresse());
+        values.put(COLUMN_ACTIVITY, demande.getActivity());
+        values.put(COLUMN_NUM_FISC, demande.getNumFiscale());
+        values.put(COLUMN_RIB, demande.getRibBanque());
+        values.put(COLUMN_ETAT, demande.getEtat());
+        values.put(COLUMN_IDNT_URI, demande.getIdentiteUri().toString());
+        values.put(COLUMN_CONTRAT_URI, demande.getContratEndroitUri().toString());
+        values.put(COLUMN_FISCALE_URI, demande.getFiscaleUri().toString());
+        values.put(COLUMN_RIB_URI, demande.getRibUri().toString());
         // updating row
-        return db.update(TABLE_DEMANDES, values, KEY_ID + " = ?",
+        return db.update(TABLE_DEMANDES, values, COLUMN_ID + " = ?",
                 new String[] { String.valueOf(demande.getId()) });
     }
 
     // Deleting single contact
     public void deleteUser(Demandes demande) {
         SQLiteDatabase db = this.getWritableDatabase();
-        db.delete(TABLE_DEMANDES, KEY_ID + " = ?",
+        db.delete(TABLE_DEMANDES, COLUMN_ID + " = ?",
                 new String[] { String.valueOf(demande.getId()) });
         db.close();
     }

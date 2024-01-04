@@ -5,6 +5,24 @@
     <value-preview-text-wrapping value="false" />
     <value-preview-pinned value="false" />
   </component>
+  <component name="DBNavigator.Project.DataExportManager">
+    <export-instructions>
+      <create-header value="true" />
+      <friendly-headers value="false" />
+      <quote-values-containing-separator value="true" />
+      <quote-all-values value="true" />
+      <value-separator value="" />
+      <begin-quote value="&quot;" />
+      <end-quote value="&quot;" />
+      <file-name value="Demandes.sql" />
+      <file-location value="C:\Users\UNITECH\Desktop" />
+      <scope value="SELECTION" />
+      <destination value="FILE" />
+      <format value="SQL" />
+      <charset value="windows-1252" />
+      <charset value="windows-1252" />
+    </export-instructions>
+  </component>
   <component name="DBNavigator.Project.DatabaseBrowserManager">
     <autoscroll-to-editor value="false" />
     <autoscroll-from-editor value="true" />
@@ -12,7 +30,7 @@
     <loaded-nodes />
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
-    <connection id="2a6b730d-bbb7-44f4-bc02-e2156ce33549">
+    <connection id="71f5d56e-3ad1-4eb5-b92c-17d12b6693c6">
       <console name="Connection" type="STANDARD" schema="" session="Main" />
     </connection>
   </component>
@@ -23,7 +41,10 @@
     <open-files />
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
-    <connection id="2a6b730d-bbb7-44f4-bc02-e2156ce33549" />
+    <connection id="71f5d56e-3ad1-4eb5-b92c-17d12b6693c6" />
+  </component>
+  <component name="DBNavigator.Project.DatasetFilterManager">
+    <filter-actions connection-id="71f5d56e-3ad1-4eb5-b92c-17d12b6693c6" dataset="main.Demandes" active-filter-id="EMPTY_FILTER" />
   </component>
   <component name="DBNavigator.Project.ExecutionManager">
     <retain-sticky-names value="false" />
@@ -42,7 +63,7 @@
   </component>
   <component name="DBNavigator.Project.Settings">
     <connections>
-      <connection id="2a6b730d-bbb7-44f4-bc02-e2156ce33549" active="true" signed="true">
+      <connection id="71f5d56e-3ad1-4eb5-b92c-17d12b6693c6" active="true" signed="true">
         <database>
           <name value="Connection" />
           <description value="" />

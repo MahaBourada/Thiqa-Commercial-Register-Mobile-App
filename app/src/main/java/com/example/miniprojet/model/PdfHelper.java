@@ -8,7 +8,7 @@ import android.net.Uri;
 public class PdfHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "RegistreCommerce";
-    private static final int DATABASE_VERSION = 2;
+    private static final int DATABASE_VERSION = 3;
     protected static final String TABLE_NAME = "PdfFiles";
     private static final String COLUMN_ID = "id";
     protected static final String COLUMN_FILE_URI = "file_uri";
@@ -37,7 +37,7 @@ public class PdfHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
-        values.put(PdfHelper.COLUMN_FILE_URI, fileUri.toString());
+        values.put(COLUMN_FILE_URI, fileUri.toString());
 
         db.insert(TABLE_NAME, null, values);
     }

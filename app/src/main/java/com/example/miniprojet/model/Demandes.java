@@ -5,7 +5,8 @@ public class Demandes {
     public Demandes() {
     }
 
-    public Demandes(int id, String typeIdentite, int numIdentite, String nomEntreprise, String adresse, String activity, int numFiscale, int ribBanque, String etat) {
+    public Demandes(int id, String typeIdentite, int numIdentite, String nomEntreprise, String adresse, String activity, int numFiscale, int ribBanque,
+                    String etat, String identiteUri, String contratEndroitUri, String fiscaleUri, String ribUri) {
         this.id = id;
         this.typeIdentite = typeIdentite;
         this.numIdentite = numIdentite;
@@ -15,9 +16,14 @@ public class Demandes {
         this.numFiscale = numFiscale;
         this.ribBanque = ribBanque;
         this.etat = etat;
+        this.identiteUri = identiteUri;
+        this.contratEndroitUri = contratEndroitUri;
+        this.fiscaleUri = fiscaleUri;
+        this.ribUri = ribUri;
     }
 
-    public Demandes(String typeIdentite, int numIdentite, String nomEntreprise, String adresse, String activity, int numFiscale, int ribBanque, String etat) {
+    public Demandes(String typeIdentite, int numIdentite, String nomEntreprise, String adresse, String activity, int numFiscale, int ribBanque,
+                    String etat, String identiteUri, String contratEndroitUri, String fiscaleUri, String ribUri) {
         this.typeIdentite = typeIdentite;
         this.numIdentite = numIdentite;
         this.nomEntreprise = nomEntreprise;
@@ -26,6 +32,10 @@ public class Demandes {
         this.numFiscale = numFiscale;
         this.ribBanque = ribBanque;
         this.etat = etat;
+        this.identiteUri = identiteUri;
+        this.contratEndroitUri = contratEndroitUri;
+        this.fiscaleUri = fiscaleUri;
+        this.ribUri = ribUri;
     }
 
     int id;
@@ -33,11 +43,14 @@ public class Demandes {
     int numIdentite;
     String nomEntreprise;
     String adresse;
-
     String activity;
     int numFiscale;
     int ribBanque;
     String etat;
+    String identiteUri;
+    String contratEndroitUri;
+    String fiscaleUri;
+    String ribUri;
 
     public int getId() {
         return id;
@@ -109,5 +122,37 @@ public class Demandes {
 
     public void setEtat(String etat) {
         this.etat = etat;
+    }
+
+    public String getIdentiteUri() {
+        return identiteUri;
+    }
+
+    public void setIdentiteUri(String identiteUri) {
+        this.identiteUri = identiteUri;
+    }
+
+    public String getContratEndroitUri() {
+        return contratEndroitUri;
+    }
+
+    public void setContratEndroitUri(String contratEndroitUri) {
+        this.contratEndroitUri = contratEndroitUri;
+    }
+
+    public String getFiscaleUri() {
+        return fiscaleUri;
+    }
+
+    public void setFiscaleUri(String fiscaleUri) {
+        this.fiscaleUri = fiscaleUri;
+    }
+
+    public String getRibUri() {
+        return ribUri;
+    }
+
+    public void setRibUri(String ribUri) {
+        this.ribUri = ribUri;
     }
 }
