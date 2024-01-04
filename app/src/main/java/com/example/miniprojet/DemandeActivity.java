@@ -1,7 +1,6 @@
 package com.example.miniprojet;
 
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
@@ -16,7 +15,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.miniprojet.model.Demandes;
 import com.example.miniprojet.model.DemandesHelper;
-import com.example.miniprojet.model.PdfHelper;
 
 import java.util.List;
 
@@ -118,7 +116,7 @@ public class DemandeActivity extends AppCompatActivity {
 
             Toast.makeText(this, "Fichier enregistré!", Toast.LENGTH_SHORT).show();
         } else {
-            Toast.makeText(this, "Erreur: Réessayez", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Erreur: Veuillez réessayez", Toast.LENGTH_SHORT).show();
         }
     }
 
