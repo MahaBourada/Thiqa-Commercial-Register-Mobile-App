@@ -2,9 +2,6 @@ package com.example.miniprojet;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.content.pm.ResolveInfo;
-import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -54,25 +51,8 @@ public class CustomDemandeAdapter extends BaseAdapter {
         entrepriseName.setText(demande.getNomEntreprise());
 
         // Set etat
-        etat.setText(demande.getEtat());
+        etat.setText(demande.getEtat()); // Display the status directly
 
         return convertView;
-    }
-
-    private void openSocialMediaLink(String link) {
-        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(link));
-
-        // Check if there's an app to handle the intent
-        PackageManager packageManager = context.getPackageManager();
-        List<ResolveInfo> activities = packageManager.queryIntentActivities(intent, 0);
-        boolean isIntentSafe = activities.size() > 0;
-
-        if (isIntentSafe) {
-            context.startActivity(intent);
-        } else {
-            // If no app can handle the intent, open the link in the browser
-            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(link));
-            context.startActivity(browserIntent);
-        }
     }
 }

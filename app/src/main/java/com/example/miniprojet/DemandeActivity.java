@@ -34,7 +34,6 @@ public class DemandeActivity extends AppCompatActivity {
     private Uri contratFileUri;
     private Uri fiscaleFileUri;
     private Uri ribFileUri;
-
     private ImageButton back;
 
     @Override
@@ -123,7 +122,6 @@ public class DemandeActivity extends AppCompatActivity {
                     ribFileUri = uri;
                     break;
             }
-
             Toast.makeText(this, "Fichier enregistré!", Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(this, "Erreur: Veuillez réessayez", Toast.LENGTH_SHORT).show();
@@ -131,15 +129,16 @@ public class DemandeActivity extends AppCompatActivity {
     }
 
     public void soumettreDemande(View view) {
-        if (widgetToString(typeIdentite).trim().equals("") || widgetToString(numIdentite).trim().equals("")
-                || widgetToString(nomEntreprise).trim().equals("") || widgetToString(adresse).trim().equals("")
-                || widgetToString(activity).trim().equals(("")) || widgetToString(numFiscale).trim().equals("")
-                || widgetToString(rib).trim().equals("")) {
+        if (necessaryFieldsError()) {
             Toast.makeText(getBaseContext(), "Veuillez compléter les champs manquants", Toast.LENGTH_SHORT).show();
+        } else if (emptyPdfError()) {
+            Toast.makeText(getBaseContext(), "Veuillez insérer les fichiers manquants", Toast.LENGTH_SHORT).show();
         } else if (!declaration.isChecked()) {
             Toast.makeText(getBaseContext(), "Veuillez accepter la déclaration pour soumettre la demande", Toast.LENGTH_SHORT).show();
         } else {
             DemandesHelper db = new DemandesHelper(this);
+
+            String etat = "En cours de traitement";
 
             db.addDemande(new Demandes(
                     widgetToString(typeIdentite),
@@ -149,11 +148,11 @@ public class DemandeActivity extends AppCompatActivity {
                     widgetToString(activity),
                     widgetToInt(numFiscale),
                     widgetToInt(rib),
-                    "En cours de traitement",
-                    idntFileUri != null ? idntFileUri.toString() : null,
-                    contratFileUri != null ? contratFileUri.toString() : null,
-                    fiscaleFileUri != null ? fiscaleFileUri.toString() : null,
-                    ribFileUri != null ? ribFileUri.toString() : null
+                    etat,
+                    idntFileUri.toString(),
+                    contratFileUri.toString(),
+                    fiscaleFileUri.toString(),
+                    ribFileUri.toString()
             ));
 
             Toast.makeText(getBaseContext(), "Demande enregistrée", Toast.LENGTH_SHORT).show();
@@ -161,6 +160,18 @@ public class DemandeActivity extends AppCompatActivity {
             Intent myintent = new Intent(DemandeActivity.this, DashboardActivity.class);
             startActivity(myintent);
         }
+    }
+
+    public boolean necessaryFieldsError() {
+        return widgetToString(typeIdentite).trim().equals("") || widgetToString(numIdentite).trim().equals("")
+                || widgetToString(nomEntreprise).trim().equals("") || widgetToString(adresse).trim().equals("")
+                || widgetToString(activity).trim().equals(("")) || widgetToString(numFiscale).trim().equals("")
+                || widgetToString(rib).trim().equals("");
+    }
+
+    public boolean emptyPdfError() {
+        return idntFileUri == null || contratFileUri == null
+                || fiscaleFileUri == null || ribFileUri == null;
     }
 
     public String widgetToString (EditText field) {

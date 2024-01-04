@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
@@ -38,6 +39,24 @@ public class DashboardActivity extends AppCompatActivity {
             listView.setAdapter(adapter);
             listView.setVisibility(View.VISIBLE);
             emptyListTextView.setVisibility(View.GONE);
+
+            // Set OnItemClickListener for the ListView
+            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    // Retrieve the clicked Demandes object
+                    Demandes selectedDemande = demandesList.get(position);
+
+                    // Create an Intent to start the DetailsActivity
+                    Intent intent = new Intent(DashboardActivity.this, DetailsActivity.class);
+
+                    // Pass the demand ID or any necessary information to retrieve details in DetailsActivity
+                    intent.putExtra("demandeId", selectedDemande.getId()); // Assuming getId() returns the ID
+
+                    // Start the DetailsActivity
+                    startActivity(intent);
+                }
+            });
         }
 
         creer_demande = findViewById(R.id.creer);

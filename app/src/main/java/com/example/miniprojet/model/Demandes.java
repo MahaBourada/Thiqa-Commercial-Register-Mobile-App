@@ -5,9 +5,21 @@ public class Demandes {
     public Demandes() {
     }
 
-    public Demandes(int id, String typeIdentite, int numIdentite, String nomEntreprise, String adresse, String activity, int numFiscale, int ribBanque,
-                    String etat, String identiteUri, String contratEndroitUri, String fiscaleUri, String ribUri) {
+    public Demandes(int id, String typeIdentite, int numIdentite, String nomEntreprise, String adresse, String activity,
+                    int numFiscale, int ribBanque, String etat) {
         this.id = id;
+        this.typeIdentite = typeIdentite;
+        this.numIdentite = numIdentite;
+        this.nomEntreprise = nomEntreprise;
+        this.adresse = adresse;
+        this.activity = activity;
+        this.numFiscale = numFiscale;
+        this.ribBanque = ribBanque;
+        this.etat = etat;
+    }
+
+    public Demandes(String typeIdentite, int numIdentite, String nomEntreprise, String adresse, String activity, int numFiscale,
+                    int ribBanque, String etat, String identiteUri, String contratEndroitUri, String fiscaleUri, String ribUri) {
         this.typeIdentite = typeIdentite;
         this.numIdentite = numIdentite;
         this.nomEntreprise = nomEntreprise;
@@ -22,8 +34,9 @@ public class Demandes {
         this.ribUri = ribUri;
     }
 
-    public Demandes(String typeIdentite, int numIdentite, String nomEntreprise, String adresse, String activity, int numFiscale, int ribBanque,
+    public Demandes(int id, String typeIdentite, int numIdentite, String nomEntreprise, String adresse, String activity, int numFiscale, int ribBanque,
                     String etat, String identiteUri, String contratEndroitUri, String fiscaleUri, String ribUri) {
+        this.id = id;
         this.typeIdentite = typeIdentite;
         this.numIdentite = numIdentite;
         this.nomEntreprise = nomEntreprise;

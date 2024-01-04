@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <ImageButton
+            android:id="@+id/back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="30dp"
+            android:src="@drawable/back"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Détails de la demande"
+            android:textSize="32sp"
+            android:layout_marginTop="20dp"
+            android:layout_marginHorizontal="35dp"
+            android:textColor="@color/orange_secondary"
+            android:fontFamily="@font/aleo"
+            android:textStyle="bold"
+            />
+
+        <TextView
+            android:id="@+id/companyName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="32sp"
+            android:text="Company 1"
+            android:layout_marginHorizontal="35dp"
+            android:layout_marginBottom="40dp"
+            android:textColor="@color/orange_secondary"
+            android:fontFamily="@font/aleo"
+            android:textStyle="bold"
+            />
+
+        <TextView
+            android:id="@+id/etat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:text="etat"
+            android:layout_marginHorizontal="50dp"
+            android:layout_gravity="end"
+            android:textColor="@color/black"
+            android:fontFamily="@font/aleo"
+            android:textStyle="bold"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Détails du demandeur"
+            android:textSize="26sp"
+            android:layout_marginHorizontal="35dp"
+            android:layout_marginTop="0dp"
+            android:textColor="@color/orange_secondary"
+            android:fontFamily="@font/aleo"
+            android:textStyle="bold"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Type de pièce d'identité"
+            android:textSize="20sp"
+            android:layout_marginHorizontal="42dp"
+            android:layout_marginBottom="5dp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/aleo"
+            android:textStyle="bold"
+            android:drawableEnd="@drawable/edit"
+            />
+
+        <TextView
+            android:id="@+id/type_identite"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Passeport"
+            android:textSize="18sp"
+            android:layout_marginHorizontal="50dp"
+            android:layout_marginBottom="20dp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/aleo"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="N° de pièce d’identité"
+            android:textSize="20sp"
+            android:layout_marginHorizontal="42dp"
+            android:layout_marginBottom="5dp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/aleo"
+            android:textStyle="bold"
+            android:drawableEnd="@drawable/edit"
+            />
+
+        <TextView
+            android:id="@+id/num_identite"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="123456789"
+            android:textSize="18sp"
+            android:layout_marginHorizontal="50dp"
+            android:layout_marginBottom="20dp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/aleo"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Détails de l'entreprise"
+            android:textSize="26sp"
+            android:layout_marginHorizontal="35dp"
+            android:layout_marginTop="20dp"
+            android:textColor="@color/orange_secondary"
+            android:fontFamily="@font/aleo"
+            android:textStyle="bold"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nom de l’entreprise"
+            android:textSize="20sp"
+            android:layout_marginHorizontal="42dp"
+            android:layout_marginBottom="5dp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/aleo"
+            android:textStyle="bold"
+            android:drawableEnd="@drawable/edit"
+            />
+
+        <TextView
+            android:id="@+id/nom_entreprise"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Company 1"
+            android:textSize="18sp"
+            android:layout_marginHorizontal="50dp"
+            android:layout_marginBottom="20dp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/aleo"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Adresse commerciale"
+            android:textSize="20sp"
+            android:layout_marginHorizontal="42dp"
+            android:layout_marginBottom="5dp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/aleo"
+            android:textStyle="bold"
+            android:drawableEnd="@drawable/edit"
+            />
+
+        <TextView
+            android:id="@+id/adresse"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Somewhere"
+            android:textSize="18sp"
+            android:layout_marginHorizontal="50dp"
+            android:layout_marginBottom="20dp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/aleo"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Type d’activités"
+            android:textSize="20sp"
+            android:layout_marginHorizontal="42dp"
+            android:layout_marginBottom="5dp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/aleo"
+            android:textStyle="bold"
+            android:drawableEnd="@drawable/edit"
+            />
+
+        <TextView
+            android:id="@+id/activite"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Cosmetiques"
+            android:textSize="18sp"
+            android:layout_marginHorizontal="50dp"
+            android:layout_marginBottom="20dp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/aleo"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="N° d’identification fiscale"
+            android:textSize="20sp"
+            android:layout_marginHorizontal="42dp"
+            android:layout_marginBottom="5dp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/aleo"
+            android:textStyle="bold"
+            android:drawableEnd="@drawable/edit"
+            />
+
+        <TextView
+            android:id="@+id/num_fiscale"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="123456789"
+            android:textSize="18sp"
+            android:layout_marginHorizontal="50dp"
+            android:layout_marginBottom="20dp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/aleo"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="RIB"
+            android:textSize="20sp"
+            android:layout_marginHorizontal="42dp"
+            android:layout_marginBottom="5dp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/aleo"
+            android:textStyle="bold"
+            android:drawableEnd="@drawable/edit"
+            />
+
+        <TextView
+            android:id="@+id/rib"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="123456789"
+            android:textSize="18sp"
+            android:layout_marginHorizontal="50dp"
+            android:layout_marginBottom="20dp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/aleo"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Fichiers soumis"
+            android:textSize="26sp"
+            android:layout_marginHorizontal="35dp"
+            android:layout_marginTop="40dp"
+            android:textColor="@color/orange_secondary"
+            android:fontFamily="@font/aleo"
+            android:textStyle="bold"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Pèce d’identité"
+            android:textSize="20sp"
+            android:layout_marginHorizontal="42dp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/aleo"
+            android:textStyle="bold"
+            android:drawableEnd="@drawable/edit"
+            />
+
+        <Button
+            android:id="@+id/idntFile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Passeport.pdf"
+            android:textSize="18sp"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/transparent_background"
+            android:textColor="@color/black"
+            android:fontFamily="@font/aleo"
+            android:drawableEnd="@drawable/download"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Contrat de bail/propriété"
+            android:textSize="20sp"
+            android:layout_marginHorizontal="42dp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/aleo"
+            android:textStyle="bold"
+            android:drawableEnd="@drawable/edit"
+            />
+
+        <Button
+            android:id="@+id/contratFile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Contrat.pdf"
+            android:textSize="18sp"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/transparent_background"
+            android:textColor="@color/black"
+            android:fontFamily="@font/aleo"
+            android:drawableEnd="@drawable/download"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Carte fiscale"
+            android:textSize="20sp"
+            android:layout_marginHorizontal="42dp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/aleo"
+            android:textStyle="bold"
+            android:drawableEnd="@drawable/edit"
+            />
+
+        <Button
+            android:id="@+id/fiscaleFile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Fiscale.pdf"
+            android:textSize="18sp"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/transparent_background"
+            android:textColor="@color/black"
+            android:fontFamily="@font/aleo"
+            android:drawableEnd="@drawable/download"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Chèque barré"
+            android:textSize="20sp"
+            android:layout_marginHorizontal="42dp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/aleo"
+            android:textStyle="bold"
+            android:drawableEnd="@drawable/edit"
+            />
+
+        <Button
+            android:id="@+id/ribFile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Rib.pdf"
+            android:textSize="18sp"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/transparent_background"
+            android:textColor="@color/black"
+            android:fontFamily="@font/aleo"
+            android:drawableEnd="@drawable/download"
+            />
+
+    </LinearLayout>
+</ScrollView>

@@ -23,6 +23,7 @@
             android:layout_marginHorizontal="35dp"
             android:textColor="@color/orange_secondary"
             android:fontFamily="@font/aleo"
+            android:textStyle="bold"
             />
 
         <TextView
@@ -35,6 +36,7 @@
             android:layout_marginHorizontal="35dp"
             android:textColor="@color/orange_secondary"
             android:fontFamily="@font/aleo"
+            android:textStyle="bold"
             />
 
         <Button
