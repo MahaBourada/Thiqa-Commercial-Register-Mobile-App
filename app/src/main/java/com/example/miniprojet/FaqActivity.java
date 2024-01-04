@@ -1,14 +1,27 @@
 package com.example.miniprojet;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageButton;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 public class FaqActivity extends AppCompatActivity {
+    private ImageButton back;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_faq);
+
+        back = findViewById(R.id.back);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent myintent = new Intent(FaqActivity.this, DashboardActivity.class);
+                startActivity(myintent);
+            }
+        });
 
         ExpandableTextView expandableTextView1 = findViewById(R.id.expandableTextView1);
         expandableTextView1.setQuestion("Quels documents fournir ?");

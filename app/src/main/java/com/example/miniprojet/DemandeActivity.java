@@ -8,6 +8,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -34,12 +35,21 @@ public class DemandeActivity extends AppCompatActivity {
     private Uri fiscaleFileUri;
     private Uri ribFileUri;
 
-
+    private ImageButton back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_demande);
+
+        back = findViewById(R.id.back);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent myintent = new Intent(DemandeActivity.this, DashboardActivity.class);
+                startActivity(myintent);
+            }
+        });
 
         typeIdentite = findViewById(R.id.type_identite);
         numIdentite = findViewById(R.id.num_identite);

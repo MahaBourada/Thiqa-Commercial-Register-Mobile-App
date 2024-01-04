@@ -14,11 +14,21 @@ import androidx.appcompat.app.AppCompatActivity;
 public class SupportActivity extends AppCompatActivity {
     EditText objet, contenu;
     Button send, telephone;
+    private ImageButton back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_support);
+
+        back = findViewById(R.id.back);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent myintent = new Intent(SupportActivity.this, DashboardActivity.class);
+                startActivity(myintent);
+            }
+        });
 
         objet = findViewById(R.id.objet);
         contenu = findViewById(R.id.contenu);
