@@ -11,7 +11,7 @@ import android.net.Uri;
 import java.util.ArrayList;
 import java.util.List;
 public class DemandesHelper extends SQLiteOpenHelper {
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 4;
     private static final String DATABASE_NAME = "RegistreCommerce";
     private static final String TABLE_DEMANDES = "Demandes";
     private static final String COLUMN_ID = "id";
@@ -23,10 +23,10 @@ public class DemandesHelper extends SQLiteOpenHelper {
     private static final String COLUMN_NUM_FISC = "numFiscale";
     private static final String COLUMN_RIB = "ribBanque";
     private static final String COLUMN_ETAT = "etat";
-    private static final String COLUMN_IDNT_URI = "idntUri";
-    private static final String COLUMN_CONTRAT_URI = "cntrtUri";
-    private static final String COLUMN_FISCALE_URI = "fiscaleUri";
-    private static final String COLUMN_RIB_URI = "ribUri";
+    private static final String COLUMN_IDNT_PATH = "idntPath";
+    private static final String COLUMN_CONTRAT_PATH = "contratPath";
+    private static final String COLUMN_FISCALE_PATH = "fiscalePath";
+    private static final String COLUMN_RIB_PATH = "ribPath";
 
     public DemandesHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -40,8 +40,8 @@ public class DemandesHelper extends SQLiteOpenHelper {
                 + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + COLUMN_TYPE_IDNT + " TEXT,"
                 + COLUMN_NUM_IDNT + " INTEGER," + COLUMN_NOM + " TEXT," + COLUMN_ADRESSE
                 + " TEXT," + COLUMN_ACTIVITY + " TEXT," + COLUMN_NUM_FISC + " INTEGER,"
-                + COLUMN_RIB + " INTEGER," + COLUMN_ETAT + " TEXT DEFAULT 'ahahahaha'," + COLUMN_IDNT_URI + " TEXT,"
-                + COLUMN_CONTRAT_URI + " TEXT," + COLUMN_FISCALE_URI + " TEXT, " + COLUMN_RIB_URI + " TEXT" + ")";
+                + COLUMN_RIB + " INTEGER," + COLUMN_ETAT + " TEXT DEFAULT 'ahahahaha'," + COLUMN_IDNT_PATH + " TEXT,"
+                + COLUMN_CONTRAT_PATH + " TEXT," + COLUMN_FISCALE_PATH + " TEXT, " + COLUMN_RIB_PATH + " TEXT" + ")";
         db.execSQL(CREATE_CONTACTS_TABLE);
     }
     // Upgrading database
@@ -64,10 +64,10 @@ public class DemandesHelper extends SQLiteOpenHelper {
         values.put(COLUMN_NUM_FISC, demande.getNumFiscale());
         values.put(COLUMN_RIB, demande.getRibBanque());
         values.put(COLUMN_ETAT, demande.getEtat());
-        values.put(COLUMN_IDNT_URI, demande.getIdentiteUri());
-        values.put(COLUMN_CONTRAT_URI, demande.getContratEndroitUri());
-        values.put(COLUMN_FISCALE_URI, demande.getFiscaleUri());
-        values.put(COLUMN_RIB_URI, demande.getRibUri());
+        values.put(COLUMN_IDNT_PATH, demande.getIdentitePath());
+        values.put(COLUMN_CONTRAT_PATH, demande.getContratEndroitPath());
+        values.put(COLUMN_FISCALE_PATH, demande.getFiscalePath());
+        values.put(COLUMN_RIB_PATH, demande.getRibPath());
         // Inserting Row
         db.insert(TABLE_DEMANDES, null, values);
         //2nd argument is String containing nullColumnHack
@@ -79,8 +79,8 @@ public class DemandesHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query(TABLE_DEMANDES, new String[] { COLUMN_ID,
                         COLUMN_TYPE_IDNT, COLUMN_NUM_IDNT, COLUMN_NOM, COLUMN_ADRESSE,
-                        COLUMN_ACTIVITY, COLUMN_NUM_FISC, COLUMN_RIB, COLUMN_ETAT, COLUMN_IDNT_URI,
-                        COLUMN_CONTRAT_URI, COLUMN_FISCALE_URI, COLUMN_RIB_URI}, COLUMN_ID + "=?",
+                        COLUMN_ACTIVITY, COLUMN_NUM_FISC, COLUMN_RIB, COLUMN_ETAT, COLUMN_IDNT_PATH,
+                        COLUMN_CONTRAT_PATH, COLUMN_FISCALE_PATH, COLUMN_RIB_PATH}, COLUMN_ID + "=?",
                 new String[] { String.valueOf(id) }, null, null, null, null);
 
         Demandes demande = new Demandes();
@@ -95,10 +95,10 @@ public class DemandesHelper extends SQLiteOpenHelper {
             demande.setNumFiscale(cursor.getInt(cursor.getColumnIndex(COLUMN_NUM_FISC)));
             demande.setRibBanque(cursor.getInt(cursor.getColumnIndex(COLUMN_RIB)));
             demande.setEtat(cursor.getString(cursor.getColumnIndex(COLUMN_ETAT)));
-            demande.setEtat(cursor.getString(cursor.getColumnIndex(COLUMN_IDNT_URI)));
-            demande.setEtat(cursor.getString(cursor.getColumnIndex(COLUMN_CONTRAT_URI)));
-            demande.setEtat(cursor.getString(cursor.getColumnIndex(COLUMN_FISCALE_URI)));
-            demande.setEtat(cursor.getString(cursor.getColumnIndex(COLUMN_RIB_URI)));
+            demande.setIdentitePath(cursor.getString(cursor.getColumnIndex(COLUMN_IDNT_PATH)));
+            demande.setContratEndroitPath(cursor.getString(cursor.getColumnIndex(COLUMN_CONTRAT_PATH)));
+            demande.setFiscalePath(cursor.getString(cursor.getColumnIndex(COLUMN_FISCALE_PATH)));
+            demande.setRibPath(cursor.getString(cursor.getColumnIndex(COLUMN_RIB_PATH)));
 
             cursor.close();
         }
@@ -163,10 +163,10 @@ public class DemandesHelper extends SQLiteOpenHelper {
         values.put(COLUMN_NUM_FISC, demande.getNumFiscale());
         values.put(COLUMN_RIB, demande.getRibBanque());
         values.put(COLUMN_ETAT, demande.getEtat());
-        values.put(COLUMN_IDNT_URI, demande.getIdentiteUri());
-        values.put(COLUMN_CONTRAT_URI, demande.getContratEndroitUri());
-        values.put(COLUMN_FISCALE_URI, demande.getFiscaleUri());
-        values.put(COLUMN_RIB_URI, demande.getRibUri());
+        values.put(COLUMN_IDNT_PATH, demande.getIdentitePath());
+        values.put(COLUMN_CONTRAT_PATH, demande.getContratEndroitPath());
+        values.put(COLUMN_FISCALE_PATH, demande.getFiscalePath());
+        values.put(COLUMN_RIB_PATH, demande.getRibPath());
         // updating row
         return db.update(TABLE_DEMANDES, values, COLUMN_ID + " = ?",
                 new String[] { String.valueOf(demande.getId()) });

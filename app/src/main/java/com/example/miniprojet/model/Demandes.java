@@ -19,7 +19,7 @@ public class Demandes {
     }
 
     public Demandes(String typeIdentite, int numIdentite, String nomEntreprise, String adresse, String activity, int numFiscale,
-                    int ribBanque, String etat, String identiteUri, String contratEndroitUri, String fiscaleUri, String ribUri) {
+                    int ribBanque, String etat, String identitePath, String contratEndroitPath, String fiscalePath, String ribPath) {
         this.typeIdentite = typeIdentite;
         this.numIdentite = numIdentite;
         this.nomEntreprise = nomEntreprise;
@@ -28,14 +28,14 @@ public class Demandes {
         this.numFiscale = numFiscale;
         this.ribBanque = ribBanque;
         this.etat = etat;
-        this.identiteUri = identiteUri;
-        this.contratEndroitUri = contratEndroitUri;
-        this.fiscaleUri = fiscaleUri;
-        this.ribUri = ribUri;
+        this.identitePath = identitePath;
+        this.contratEndroitPath = contratEndroitPath;
+        this.fiscalePath = fiscalePath;
+        this.ribPath = ribPath;
     }
 
     public Demandes(int id, String typeIdentite, int numIdentite, String nomEntreprise, String adresse, String activity, int numFiscale, int ribBanque,
-                    String etat, String identiteUri, String contratEndroitUri, String fiscaleUri, String ribUri) {
+                    String etat, String identitePath, String contratEndroitPath, String fiscalePath, String ribPath) {
         this.id = id;
         this.typeIdentite = typeIdentite;
         this.numIdentite = numIdentite;
@@ -45,10 +45,10 @@ public class Demandes {
         this.numFiscale = numFiscale;
         this.ribBanque = ribBanque;
         this.etat = etat;
-        this.identiteUri = identiteUri;
-        this.contratEndroitUri = contratEndroitUri;
-        this.fiscaleUri = fiscaleUri;
-        this.ribUri = ribUri;
+        this.identitePath = identitePath;
+        this.contratEndroitPath = contratEndroitPath;
+        this.fiscalePath = fiscalePath;
+        this.ribPath = ribPath;
     }
 
     int id;
@@ -60,10 +60,10 @@ public class Demandes {
     int numFiscale;
     int ribBanque;
     String etat;
-    String identiteUri;
-    String contratEndroitUri;
-    String fiscaleUri;
-    String ribUri;
+    String identitePath;
+    String contratEndroitPath;
+    String fiscalePath;
+    String ribPath;
 
     public int getId() {
         return id;
@@ -137,35 +137,35 @@ public class Demandes {
         this.etat = etat;
     }
 
-    public String getIdentiteUri() {
-        return identiteUri;
+    public String getIdentitePath() {
+        return identitePath;
     }
 
-    public void setIdentiteUri(String identiteUri) {
-        this.identiteUri = identiteUri;
+    public void setIdentitePath(String identitePath) {
+        this.identitePath = identitePath;
     }
 
-    public String getContratEndroitUri() {
-        return contratEndroitUri;
+    public String getContratEndroitPath() {
+        return contratEndroitPath;
     }
 
-    public void setContratEndroitUri(String contratEndroitUri) {
-        this.contratEndroitUri = contratEndroitUri;
+    public void setContratEndroitPath(String contratEndroitPath) {
+        this.contratEndroitPath = contratEndroitPath;
     }
 
-    public String getFiscaleUri() {
-        return fiscaleUri;
+    public String getFiscalePath() {
+        return fiscalePath;
     }
 
-    public void setFiscaleUri(String fiscaleUri) {
-        this.fiscaleUri = fiscaleUri;
+    public void setFiscalePath(String fiscalePath) {
+        this.fiscalePath = fiscalePath;
     }
 
-    public String getRibUri() {
-        return ribUri;
+    public String getRibPath() {
+        return ribPath;
     }
 
-    public void setRibUri(String ribUri) {
-        this.ribUri = ribUri;
+    public void setRibPath(String ribPath) {
+        this.ribPath = ribPath;
     }
 }

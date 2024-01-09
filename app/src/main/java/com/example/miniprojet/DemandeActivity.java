@@ -131,7 +131,7 @@ public class DemandeActivity extends AppCompatActivity {
     public void soumettreDemande(View view) {
         if (necessaryFieldsError()) {
             Toast.makeText(getBaseContext(), "Veuillez compléter les champs manquants", Toast.LENGTH_SHORT).show();
-        } else if (emptyPdfError()) {
+        } else  if (emptyPdfError()) {
             Toast.makeText(getBaseContext(), "Veuillez insérer les fichiers manquants", Toast.LENGTH_SHORT).show();
         } else if (!declaration.isChecked()) {
             Toast.makeText(getBaseContext(), "Veuillez accepter la déclaration pour soumettre la demande", Toast.LENGTH_SHORT).show();

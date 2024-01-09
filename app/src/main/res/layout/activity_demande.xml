@@ -1,8 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:adjustViewBounds="true"
+        android:maxHeight="0dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/backgrounddrawing" />
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -13,7 +24,7 @@
         android:layout_height="wrap_content"
         android:background="@null"
         android:layout_marginTop="30dp"
-        android:layout_marginLeft="30dp"
+        android:layout_marginLeft="22dp"
         android:src="@drawable/back"
         />
 
@@ -21,10 +32,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Demande de registre de commerce"
-        android:textSize="32sp"
+        android:textSize="28sp"
         android:layout_marginTop="20dp"
         android:layout_marginHorizontal="35dp"
-        android:textColor="@color/orange_secondary"
+        android:textColor="@color/black"
         android:fontFamily="@font/aleo"
         android:textStyle="bold"
     />
@@ -33,10 +44,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Détails du demandeur"
-            android:textSize="26sp"
+            android:textSize="24sp"
             android:layout_marginHorizontal="35dp"
             android:layout_marginTop="40dp"
-            android:textColor="@color/orange_secondary"
+            android:textColor="@color/black"
             android:fontFamily="@font/aleo"
             android:textStyle="bold"
             />
@@ -46,13 +57,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Type de pièce d'identité"
-        android:textColorHint="#777"
-        android:background="@drawable/rounded_input"
+        android:background="@drawable/input_background"
         android:paddingHorizontal="20dp"
         android:paddingVertical="15dp"
         android:layout_marginTop="23dp"
         android:layout_marginHorizontal="26dp"
         android:fontFamily="@font/aleo"
+        android:textColorHint="#666"
+        android:textStyle="bold"
         />
 
     <EditText
@@ -60,14 +72,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="N° de la pièce d'identité"
-        android:textColorHint="#777"
-        android:background="@drawable/rounded_input"
+        android:background="@drawable/input_background"
         android:paddingHorizontal="20dp"
         android:paddingVertical="15dp"
         android:layout_marginTop="23dp"
         android:layout_marginHorizontal="26dp"
         android:fontFamily="@font/aleo"
         android:inputType="number"
+        android:textColorHint="#666"
+        android:textStyle="bold"
         />
 
     <androidx.appcompat.widget.AppCompatButton
@@ -77,8 +90,7 @@
         android:text="Pèce d’identité"
         android:textSize="18sp"
         android:textColor="@color/black"
-        android:background="@drawable/button_background"
-        android:drawableRight="@drawable/upload"
+        android:background="@drawable/up_down_background"
         android:drawableEnd="@drawable/upload"
         android:paddingHorizontal="22dp"
         android:paddingVertical="15dp"
@@ -86,16 +98,17 @@
         android:layout_marginHorizontal="26dp"
         android:gravity="start|center_vertical"
         android:fontFamily="@font/aleo"
-        android:textAllCaps="false"/>
+        android:textAllCaps="false"
+        android:textStyle="bold" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Détails de l’entreprise"
-        android:textSize="26sp"
+        android:textSize="24sp"
         android:layout_marginTop="40dp"
         android:layout_marginStart="35dp"
-        android:textColor="@color/orange_secondary"
+        android:textColor="@color/black"
         android:fontFamily="@font/aleo"
         android:textStyle="bold"
         />
@@ -105,13 +118,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Nom de l'entreprise"
-        android:textColorHint="#777"
-        android:background="@drawable/rounded_input"
+        android:background="@drawable/input_background"
         android:paddingHorizontal="20dp"
         android:paddingVertical="15dp"
         android:layout_marginTop="23dp"
         android:layout_marginHorizontal="26dp"
         android:fontFamily="@font/aleo"
+        android:textColorHint="#666"
+        android:textStyle="bold"
     />
 
     <EditText
@@ -119,13 +133,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Adresse commerciale"
-        android:textColorHint="#777"
-        android:background="@drawable/rounded_input"
+        android:background="@drawable/input_background"
         android:paddingHorizontal="20dp"
         android:paddingVertical="15dp"
         android:layout_marginTop="23dp"
         android:layout_marginHorizontal="26dp"
         android:fontFamily="@font/aleo"
+        android:textColorHint="#666"
+        android:textStyle="bold"
         />
 
     <EditText
@@ -134,12 +149,13 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="26dp"
         android:layout_marginTop="23dp"
-        android:background="@drawable/rounded_input"
+        android:background="@drawable/input_background"
         android:fontFamily="@font/aleo"
         android:hint="Type d'activité"
         android:paddingHorizontal="20dp"
         android:paddingVertical="15dp"
-        android:textColorHint="#777" />
+        android:textColorHint="#666"
+        android:textStyle="bold" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/contratFile"
@@ -148,7 +164,7 @@
         android:text="Contrat de bail/propriété"
         android:textSize="18sp"
         android:textColor="@color/black"
-        android:background="@drawable/button_background"
+        android:background="@drawable/up_down_background"
         android:drawableRight="@drawable/upload"
         android:drawableEnd="@drawable/upload"
         android:paddingHorizontal="22dp"
@@ -157,7 +173,9 @@
         android:layout_marginHorizontal="26dp"
         android:gravity="start|center_vertical"
         android:fontFamily="@font/aleo"
-        android:textAllCaps="false"/>
+        android:textAllCaps="false"
+        android:onClick="requestStoragePermission"
+        android:textStyle="bold" />
 
     <EditText
         android:id="@+id/num_fiscale"
@@ -165,13 +183,14 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="26dp"
         android:layout_marginTop="23dp"
-        android:background="@drawable/rounded_input"
+        android:background="@drawable/input_background"
         android:fontFamily="@font/aleo"
         android:hint="N° d'identification fiscale"
         android:paddingHorizontal="20dp"
         android:paddingVertical="15dp"
-        android:textColorHint="#777"
-        android:inputType="number" />
+        android:inputType="number"
+        android:textColorHint="#666"
+        android:textStyle="bold" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/fiscaleFile"
@@ -180,7 +199,7 @@
         android:text="Carte fiscale"
         android:textSize="18sp"
         android:textColor="@color/black"
-        android:background="@drawable/button_background"
+        android:background="@drawable/up_down_background"
         android:drawableRight="@drawable/upload"
         android:drawableEnd="@drawable/upload"
         android:paddingHorizontal="22dp"
@@ -189,7 +208,9 @@
         android:layout_marginHorizontal="26dp"
         android:gravity="start|center_vertical"
         android:fontFamily="@font/aleo"
-        android:textAllCaps="false"/>
+        android:textAllCaps="false"
+        android:onClick="requestStoragePermission"
+        android:textStyle="bold" />
 
     <EditText
         android:id="@+id/rib"
@@ -197,13 +218,14 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="26dp"
         android:layout_marginTop="23dp"
-        android:background="@drawable/rounded_input"
+        android:background="@drawable/input_background"
         android:fontFamily="@font/aleo"
         android:hint="RIB"
         android:paddingHorizontal="20dp"
         android:paddingVertical="15dp"
-        android:textColorHint="#777"
-        android:inputType="number" />
+        android:inputType="number"
+        android:textColorHint="#666"
+        android:textStyle="bold" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/ribFile"
@@ -212,7 +234,7 @@
         android:text="Chèque barré"
         android:textSize="18sp"
         android:textColor="@color/black"
-        android:background="@drawable/button_background"
+        android:background="@drawable/up_down_background"
         android:drawableRight="@drawable/upload"
         android:drawableEnd="@drawable/upload"
         android:paddingHorizontal="22dp"
@@ -221,7 +243,9 @@
         android:layout_marginHorizontal="26dp"
         android:gravity="start|center_vertical"
         android:fontFamily="@font/aleo"
-        android:textAllCaps="false"/>
+        android:textAllCaps="false"
+        android:onClick="requestStoragePermission"
+        android:textStyle="bold" />
 
     <CheckBox
         android:id="@+id/declaration"
@@ -237,7 +261,7 @@
         android:fontFamily="@font/aleo"
     />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Soumettre"
@@ -245,12 +269,16 @@
         android:layout_marginVertical="23dp"
         android:layout_marginHorizontal="50dp"
         android:paddingVertical="10dp"
-        android:backgroundTint="@color/yellow_primary"
-        android:textColor="@color/black"
+        android:paddingHorizontal="20dp"
+        android:background="@drawable/submit_button"
+        android:textColor="#fff"
         android:fontFamily="@font/aleo"
         android:layout_gravity="center"
         android:onClick="soumettreDemande"
+        android:textAllCaps="false"
+        android:textStyle="bold"
     />
 
 </LinearLayout>
 </ScrollView>
+</FrameLayout>
