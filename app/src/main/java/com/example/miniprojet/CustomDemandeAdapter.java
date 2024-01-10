@@ -2,6 +2,7 @@ package com.example.miniprojet;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -50,6 +51,13 @@ public class CustomDemandeAdapter extends BaseAdapter {
         // Set entreprise name
         entrepriseName.setText(demande.getNomEntreprise());
 
+        if(demande.getEtat().equals("En cours de traitement")) {
+            etat.setTextColor(Color.argb(255, 208,109,17));
+        } else if(demande.getEtat().equals("Demande acceptée")) {
+            etat.setTextColor(Color.argb(255, 14, 107, 12));
+        } else if(demande.getEtat().equals("Demande refusée")) {
+            etat.setTextColor(Color.argb(255, 178, 22, 22));
+        }
         // Set etat
         etat.setText(demande.getEtat()); // Display the status directly
 

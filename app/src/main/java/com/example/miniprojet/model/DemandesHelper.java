@@ -6,12 +6,18 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.net.Uri;
+import android.os.Handler;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
+import java.util.Random;
+
 public class DemandesHelper extends SQLiteOpenHelper {
-    private static final int DATABASE_VERSION = 4;
+    private static final int DATABASE_VERSION = 8;
     private static final String DATABASE_NAME = "RegistreCommerce";
     private static final String TABLE_DEMANDES = "Demandes";
     private static final String COLUMN_ID = "id";
@@ -37,11 +43,19 @@ public class DemandesHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         String CREATE_CONTACTS_TABLE = "CREATE TABLE " + TABLE_DEMANDES + "("
-                + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + COLUMN_TYPE_IDNT + " TEXT,"
-                + COLUMN_NUM_IDNT + " INTEGER," + COLUMN_NOM + " TEXT," + COLUMN_ADRESSE
-                + " TEXT," + COLUMN_ACTIVITY + " TEXT," + COLUMN_NUM_FISC + " INTEGER,"
-                + COLUMN_RIB + " INTEGER," + COLUMN_ETAT + " TEXT DEFAULT 'ahahahaha'," + COLUMN_IDNT_PATH + " TEXT,"
-                + COLUMN_CONTRAT_PATH + " TEXT," + COLUMN_FISCALE_PATH + " TEXT, " + COLUMN_RIB_PATH + " TEXT" + ")";
+                + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+                + COLUMN_TYPE_IDNT + " TEXT,"
+                + COLUMN_NUM_IDNT + " INTEGER,"
+                + COLUMN_NOM + " TEXT,"
+                + COLUMN_ADRESSE + " TEXT,"
+                + COLUMN_ACTIVITY + " TEXT,"
+                + COLUMN_NUM_FISC + " INTEGER,"
+                + COLUMN_RIB + " INTEGER,"
+                + COLUMN_ETAT + " TEXT,"
+                + COLUMN_IDNT_PATH + " TEXT,"
+                + COLUMN_CONTRAT_PATH + " TEXT,"
+                + COLUMN_FISCALE_PATH + " TEXT,"
+                + COLUMN_RIB_PATH + " TEXT" + ")";
         db.execSQL(CREATE_CONTACTS_TABLE);
     }
     // Upgrading database
@@ -53,7 +67,7 @@ public class DemandesHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
     // code to add the new contact
-    public void addDemande(Demandes demande) {
+    public void addDemande(final Demandes demande) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(COLUMN_TYPE_IDNT, demande.getTypeIdentite());
@@ -63,15 +77,27 @@ public class DemandesHelper extends SQLiteOpenHelper {
         values.put(COLUMN_ACTIVITY, demande.getActivity());
         values.put(COLUMN_NUM_FISC, demande.getNumFiscale());
         values.put(COLUMN_RIB, demande.getRibBanque());
-        values.put(COLUMN_ETAT, demande.getEtat());
+        values.put(COLUMN_ETAT, "En cours de traitement");
         values.put(COLUMN_IDNT_PATH, demande.getIdentitePath());
         values.put(COLUMN_CONTRAT_PATH, demande.getContratEndroitPath());
         values.put(COLUMN_FISCALE_PATH, demande.getFiscalePath());
         values.put(COLUMN_RIB_PATH, demande.getRibPath());
+
         // Inserting Row
-        db.insert(TABLE_DEMANDES, null, values);
-        //2nd argument is String containing nullColumnHack
-        db.close(); // Closing database connection
+        long rowId = db.insert(TABLE_DEMANDES, null, values);
+
+        // Close database connection
+        db.close();
+
+        // Schedule the etat update after 30 seconds using a handler
+        final Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                System.out.println("TESTING UPDATE ETAT");
+                updateEtat(rowId);
+            }
+        }, 10000); // 30 seconds delay
     }
     // code to get the single contact
     @SuppressLint("Range")
@@ -106,29 +132,6 @@ public class DemandesHelper extends SQLiteOpenHelper {
         return demande;
     }
 
-    // Add a method to get a user by username
-    /* public Demandes getDemandeByNom(String username) {
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.query(TABLE_DEMANDES, new String[]{COLUMN_ID, COLUMN_NOM, COLUMN_ETAT},
-                COLUMN_NOM + "=?", new String[]{username}, null, null, null, null);
-
-        Demandes demande = null;
-
-        if (cursor != null) {
-            if (cursor.moveToFirst()) {
-                demande = new Demandes(Integer.parseInt(cursor.getString(0)),
-                        cursor.getString(1), Integer.parseInt(cursor.getString(2)),
-                        cursor.getString(3), cursor.getString(4),
-                        cursor.getString(5), Integer.parseInt(cursor.getString(6)),
-                        Integer.parseInt(cursor.getString(7)), cursor.getString(8),
-                        cursor.getString(9), cursor.getString(10), cursor.getString(11), cursor.getString(12));
-            }
-            cursor.close();
-        }
-
-        return demande;
-    } */
-
     // code to get all contacts in a list
     public List<Demandes> getAllDemandes() {
         List<Demandes> contactList = new ArrayList<Demandes>();
@@ -149,6 +152,26 @@ public class DemandesHelper extends SQLiteOpenHelper {
         }
         // return contact list
         return contactList;
+    }
+
+    private void updateEtat(long rowId) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues updateValues = new ContentValues();
+
+        // Use nextInt with bound 2 to get a random value of 0 or 1
+        Random random = new Random();
+        int randomValue = random.nextInt(2);
+
+        // Map 0 to "Acceptée" and 1 to "Refusée"
+        String newEtat = (randomValue == 0) ? "Demande acceptée" : "Demande refusée";
+
+        updateValues.put(COLUMN_ETAT, newEtat);
+
+        // Update the row with the new etat
+        db.update(TABLE_DEMANDES, updateValues, COLUMN_ID + " = ?", new String[]{String.valueOf(rowId)});
+
+        // Close database connection
+        db.close();
     }
 
     // code to update the single contact

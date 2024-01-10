@@ -94,8 +94,8 @@
                 android:layout_marginTop="80dp"
                 android:fontFamily="@font/aleo"
                 android:text="Pas de demandes"
-                android:textColor="#C63115"
-                android:textSize="22sp"
+                android:textColor="#A94E3D"
+                android:textSize="23sp"
                 android:visibility="gone" />
 
             <ListView

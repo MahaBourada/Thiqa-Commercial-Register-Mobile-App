@@ -138,8 +138,6 @@ public class DemandeActivity extends AppCompatActivity {
         } else {
             DemandesHelper db = new DemandesHelper(this);
 
-            String etat = "En cours de traitement";
-
             db.addDemande(new Demandes(
                     widgetToString(typeIdentite),
                     widgetToInt(numIdentite),
@@ -148,7 +146,6 @@ public class DemandeActivity extends AppCompatActivity {
                     widgetToString(activity),
                     widgetToInt(numFiscale),
                     widgetToInt(rib),
-                    etat,
                     idntFileUri.toString(),
                     contratFileUri.toString(),
                     fiscaleFileUri.toString(),

@@ -1,5 +1,7 @@
 package com.example.miniprojet.model;
 
+import java.util.Date;
+
 public class Demandes {
 
     public Demandes() {
@@ -28,6 +30,20 @@ public class Demandes {
         this.numFiscale = numFiscale;
         this.ribBanque = ribBanque;
         this.etat = etat;
+        this.identitePath = identitePath;
+        this.contratEndroitPath = contratEndroitPath;
+        this.fiscalePath = fiscalePath;
+        this.ribPath = ribPath;
+    }
+    public Demandes(String typeIdentite, int numIdentite, String nomEntreprise, String adresse, String activity, int numFiscale,
+                    int ribBanque, String identitePath, String contratEndroitPath, String fiscalePath, String ribPath) {
+        this.typeIdentite = typeIdentite;
+        this.numIdentite = numIdentite;
+        this.nomEntreprise = nomEntreprise;
+        this.adresse = adresse;
+        this.activity = activity;
+        this.numFiscale = numFiscale;
+        this.ribBanque = ribBanque;
         this.identitePath = identitePath;
         this.contratEndroitPath = contratEndroitPath;
         this.fiscalePath = fiscalePath;

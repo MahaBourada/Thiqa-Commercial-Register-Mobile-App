@@ -4,6 +4,7 @@ import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -64,6 +65,14 @@ public class DetailsActivity extends AppCompatActivity {
             rib = findViewById(R.id.rib);
             etat = findViewById(R.id.etat);
             demandeTitle = findViewById(R.id.companyName);
+
+            if(data.getEtat().equals("En cours de traitement")) {
+                etat.setTextColor(Color.argb(255, 208,109,17));
+            } else if(data.getEtat().equals("Demande acceptée")) {
+                etat.setTextColor(Color.argb(255, 14, 107, 12));
+            } else if(data.getEtat().equals("Demande refusée")) {
+                etat.setTextColor(Color.argb(255, 178, 22, 22));
+            }
 
             idntType.setText(typeIdentite);
             idntNum.setText(numIdentite);

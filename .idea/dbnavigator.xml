@@ -30,7 +30,7 @@
     <loaded-nodes />
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
-    <connection id="608cd5cd-3ce2-479a-bc37-889fb432d075">
+    <connection id="8612c2e6-c36a-4dc8-a5a3-a58ea09641ad">
       <console name="Connection" type="STANDARD" schema="" session="Main" />
     </connection>
   </component>
@@ -38,15 +38,13 @@
     <last-used-providers />
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
-    <open-files>
-      <object connection-id="608cd5cd-3ce2-479a-bc37-889fb432d075" object-ref="schemas/main/tables/Demandes" />
-    </open-files>
+    <open-files />
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
-    <connection id="608cd5cd-3ce2-479a-bc37-889fb432d075" />
+    <connection id="8612c2e6-c36a-4dc8-a5a3-a58ea09641ad" />
   </component>
   <component name="DBNavigator.Project.DatasetFilterManager">
-    <filter-actions connection-id="608cd5cd-3ce2-479a-bc37-889fb432d075" dataset="main.Demandes" active-filter-id="EMPTY_FILTER" />
+    <filter-actions connection-id="8612c2e6-c36a-4dc8-a5a3-a58ea09641ad" dataset="main.Demandes" active-filter-id="EMPTY_FILTER" />
   </component>
   <component name="DBNavigator.Project.ExecutionManager">
     <retain-sticky-names value="false" />
@@ -65,7 +63,7 @@
   </component>
   <component name="DBNavigator.Project.Settings">
     <connections>
-      <connection id="608cd5cd-3ce2-479a-bc37-889fb432d075" active="true" signed="true">
+      <connection id="8612c2e6-c36a-4dc8-a5a3-a58ea09641ad" active="true" signed="true">
         <database>
           <name value="Connection" />
           <description value="" />
