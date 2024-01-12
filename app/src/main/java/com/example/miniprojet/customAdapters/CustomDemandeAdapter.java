@@ -1,7 +1,6 @@
-package com.example.miniprojet;
+package com.example.miniprojet.customAdapters;
 
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import com.example.miniprojet.R;
 import com.example.miniprojet.model.Demandes;
 
 import java.util.List;

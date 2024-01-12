@@ -10,7 +10,6 @@
         android:scaleType="centerCrop"
         android:src="@drawable/backgrounddrawing" />
 <ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -52,36 +51,47 @@
             android:textStyle="bold"
             />
 
-    <EditText
-        android:id="@+id/type_identite"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Type de pièce d'identité"
-        android:background="@drawable/input_background"
-        android:paddingHorizontal="20dp"
-        android:paddingVertical="15dp"
-        android:layout_marginTop="23dp"
-        android:layout_marginHorizontal="26dp"
-        android:fontFamily="@font/aleo"
-        android:textColorHint="#666"
-        android:textStyle="bold"
-        />
 
-    <EditText
-        android:id="@+id/num_identite"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputType"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="N° de la pièce d'identité"
-        android:background="@drawable/input_background"
-        android:paddingHorizontal="20dp"
-        android:paddingVertical="15dp"
+        style="@style/ExposedDropdownMenu.Custom"
         android:layout_marginTop="23dp"
         android:layout_marginHorizontal="26dp"
-        android:fontFamily="@font/aleo"
-        android:inputType="number"
-        android:textColorHint="#666"
-        android:textStyle="bold"
-        />
+        android:hint="Type de pièce d'identité" >
+
+        <AutoCompleteTextView
+            android:id="@+id/type_identite"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="none"
+            android:fontFamily="@font/aleo"
+            android:textStyle="bold"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="23dp"
+        android:layout_marginHorizontal="26dp"
+        android:hint="N° de la pièce d'identité"
+        style="@style/MyTextInputLayout" >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/num_identite"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="15dp"
+            android:fontFamily="@font/aleo"
+            android:inputType="number"
+            android:textColorHint="#666"
+            android:textStyle="bold"
+            android:maxLength="9"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/idntFile"
@@ -113,49 +123,67 @@
         android:textStyle="bold"
         />
 
-    <EditText
-        android:id="@+id/nom_entreprise"
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Nom de l'entreprise"
-        android:background="@drawable/input_background"
-        android:paddingHorizontal="20dp"
-        android:paddingVertical="15dp"
         android:layout_marginTop="23dp"
         android:layout_marginHorizontal="26dp"
-        android:fontFamily="@font/aleo"
-        android:textColorHint="#666"
-        android:textStyle="bold"
-    />
+        android:hint="Nom de l'entreprise"
+        style="@style/MyTextInputLayout" >
 
+        <EditText
+            android:id="@+id/nom_entreprise"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="15dp"
+            android:fontFamily="@font/aleo"
+            android:textColorHint="#666"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:inputType="textCapSentences" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="23dp"
+        android:layout_marginHorizontal="26dp"
+        android:hint="Adresse commerciale"
+        style="@style/MyTextInputLayout" >
     <EditText
         android:id="@+id/adresse"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Adresse commerciale"
-        android:background="@drawable/input_background"
         android:paddingHorizontal="20dp"
         android:paddingVertical="15dp"
         android:layout_marginTop="23dp"
-        android:layout_marginHorizontal="26dp"
         android:fontFamily="@font/aleo"
         android:textColorHint="#666"
         android:textStyle="bold"
+        android:inputType="textCapSentences"
         />
+    </com.google.android.material.textfield.TextInputLayout>
 
-    <EditText
-        android:id="@+id/activite"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputActivite"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="26dp"
+        style="@style/ExposedDropdownMenu.Custom"
         android:layout_marginTop="23dp"
-        android:background="@drawable/input_background"
-        android:fontFamily="@font/aleo"
-        android:hint="Type d'activité"
-        android:paddingHorizontal="20dp"
-        android:paddingVertical="15dp"
-        android:textColorHint="#666"
-        android:textStyle="bold" />
+        android:layout_marginHorizontal="26dp"
+        android:hint="Type d'activité" >
+
+        <AutoCompleteTextView
+            android:id="@+id/activite"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="none"
+            android:fontFamily="@font/aleo"
+            android:textStyle="bold"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/contratFile"
@@ -177,20 +205,26 @@
         android:onClick="requestStoragePermission"
         android:textStyle="bold" />
 
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="23dp"
+        android:layout_marginHorizontal="26dp"
+        android:hint="N° d'identification fiscale"
+        style="@style/MyTextInputLayout" >
     <EditText
         android:id="@+id/num_fiscale"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="26dp"
         android:layout_marginTop="23dp"
-        android:background="@drawable/input_background"
         android:fontFamily="@font/aleo"
-        android:hint="N° d'identification fiscale"
         android:paddingHorizontal="20dp"
         android:paddingVertical="15dp"
         android:inputType="number"
         android:textColorHint="#666"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:maxLength="14" />
+</com.google.android.material.textfield.TextInputLayout>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/fiscaleFile"
@@ -212,20 +246,26 @@
         android:onClick="requestStoragePermission"
         android:textStyle="bold" />
 
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="23dp"
+        android:layout_marginHorizontal="26dp"
+        android:hint="RIB"
+        style="@style/MyTextInputLayout" >
     <EditText
         android:id="@+id/rib"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="26dp"
         android:layout_marginTop="23dp"
-        android:background="@drawable/input_background"
         android:fontFamily="@font/aleo"
-        android:hint="RIB"
         android:paddingHorizontal="20dp"
         android:paddingVertical="15dp"
         android:inputType="number"
         android:textColorHint="#666"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:maxLength="24" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/ribFile"

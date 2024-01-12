@@ -2,7 +2,27 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.MiniProjet" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="colorPrimary">@color/primary_app</item>
+    </style>
+
+    <style name="MyTextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxStrokeColor">#F8B042</item>
+        <item name="hintTextColor">#B27A24</item>
+        <item name="shapeAppearance">@style/MyShapeAppearance</item>
+    </style>
+
+    <style name="MyShapeAppearance" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">20dp</item> <!-- Adjust the corner radius as needed -->
+    </style>
+
+    <style name="ExposedDropdownMenu.Custom" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
+        <item name="boxStrokeColor">#F8B042</item>
+        <item name="hintTextColor">#B27A24</item>
+        <item name="boxCornerRadiusTopStart">20dp</item>
+        <item name="boxCornerRadiusTopEnd">20dp</item>
+        <item name="boxCornerRadiusBottomStart">20dp</item>
+        <item name="boxCornerRadiusBottomEnd">20dp</item>
     </style>
 
     <style name="Theme.MiniProjet" parent="Base.Theme.MiniProjet" />

@@ -20,7 +20,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".DashboardActivity"
+        tools:context=".activities.DashboardActivity"
         android:orientation="vertical">
         <ImageButton
             android:id="@+id/back"
@@ -50,43 +50,43 @@
             android:textStyle="bold"
             />
 
-        <com.example.miniprojet.ExpandableTextView
+        <com.example.miniprojet.activities.ExpandableTextView
             android:id="@+id/expandableTextView1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical" />
 
-        <com.example.miniprojet.ExpandableTextView
+        <com.example.miniprojet.activities.ExpandableTextView
             android:id="@+id/expandableTextView2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical" />
 
-        <com.example.miniprojet.ExpandableTextView
+        <com.example.miniprojet.activities.ExpandableTextView
             android:id="@+id/expandableTextView3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical" />
 
-        <com.example.miniprojet.ExpandableTextView
+        <com.example.miniprojet.activities.ExpandableTextView
             android:id="@+id/expandableTextView4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical" />
 
-        <com.example.miniprojet.ExpandableTextView
+        <com.example.miniprojet.activities.ExpandableTextView
             android:id="@+id/expandableTextView5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical" />
 
-        <com.example.miniprojet.ExpandableTextView
+        <com.example.miniprojet.activities.ExpandableTextView
             android:id="@+id/expandableTextView6"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical" />
 
-        <com.example.miniprojet.ExpandableTextView
+        <com.example.miniprojet.activities.ExpandableTextView
             android:id="@+id/expandableTextView7"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

@@ -1,4 +1,4 @@
-package com.example.miniprojet;
+package com.example.miniprojet.activities;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -10,6 +10,8 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.miniprojet.R;
 
 public class SupportActivity extends AppCompatActivity {
     EditText objet, contenu;

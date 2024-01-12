@@ -7,8 +7,8 @@ public class Demandes {
     public Demandes() {
     }
 
-    public Demandes(int id, String typeIdentite, int numIdentite, String nomEntreprise, String adresse, String activity,
-                    int numFiscale, int ribBanque, String etat) {
+    public Demandes(int id, String typeIdentite, String numIdentite, String nomEntreprise, String adresse, String activity,
+                    String numFiscale, String ribBanque, String etat) {
         this.id = id;
         this.typeIdentite = typeIdentite;
         this.numIdentite = numIdentite;
@@ -20,8 +20,8 @@ public class Demandes {
         this.etat = etat;
     }
 
-    public Demandes(String typeIdentite, int numIdentite, String nomEntreprise, String adresse, String activity, int numFiscale,
-                    int ribBanque, String etat, String identitePath, String contratEndroitPath, String fiscalePath, String ribPath) {
+    public Demandes(String typeIdentite, String numIdentite, String nomEntreprise, String adresse, String activity, String numFiscale,
+                    String ribBanque, String etat, String identitePath, String contratEndroitPath, String fiscalePath, String ribPath) {
         this.typeIdentite = typeIdentite;
         this.numIdentite = numIdentite;
         this.nomEntreprise = nomEntreprise;
@@ -35,8 +35,8 @@ public class Demandes {
         this.fiscalePath = fiscalePath;
         this.ribPath = ribPath;
     }
-    public Demandes(String typeIdentite, int numIdentite, String nomEntreprise, String adresse, String activity, int numFiscale,
-                    int ribBanque, String identitePath, String contratEndroitPath, String fiscalePath, String ribPath) {
+    public Demandes(String typeIdentite, String numIdentite, String nomEntreprise, String adresse, String activity, String numFiscale,
+                    String ribBanque, String identitePath, String contratEndroitPath, String fiscalePath, String ribPath) {
         this.typeIdentite = typeIdentite;
         this.numIdentite = numIdentite;
         this.nomEntreprise = nomEntreprise;
@@ -50,7 +50,7 @@ public class Demandes {
         this.ribPath = ribPath;
     }
 
-    public Demandes(int id, String typeIdentite, int numIdentite, String nomEntreprise, String adresse, String activity, int numFiscale, int ribBanque,
+    public Demandes(int id, String typeIdentite, String numIdentite, String nomEntreprise, String adresse, String activity, String numFiscale, String ribBanque,
                     String etat, String identitePath, String contratEndroitPath, String fiscalePath, String ribPath) {
         this.id = id;
         this.typeIdentite = typeIdentite;
@@ -69,12 +69,12 @@ public class Demandes {
 
     int id;
     String typeIdentite;
-    int numIdentite;
+    String numIdentite;
     String nomEntreprise;
     String adresse;
     String activity;
-    int numFiscale;
-    int ribBanque;
+    String numFiscale;
+    String ribBanque;
     String etat;
     String identitePath;
     String contratEndroitPath;
@@ -97,11 +97,11 @@ public class Demandes {
         this.typeIdentite = typeIdentite;
     }
 
-    public int getNumIdentite() {
+    public String getNumIdentite() {
         return numIdentite;
     }
 
-    public void setNumIdentite(int numIdentite) {
+    public void setNumIdentite(String numIdentite) {
         this.numIdentite = numIdentite;
     }
 
@@ -129,19 +129,19 @@ public class Demandes {
         this.activity = activity;
     }
 
-    public int getNumFiscale() {
+    public String getNumFiscale() {
         return numFiscale;
     }
 
-    public void setNumFiscale(int numFiscale) {
+    public void setNumFiscale(String numFiscale) {
         this.numFiscale = numFiscale;
     }
 
-    public int getRibBanque() {
+    public String getRibBanque() {
         return ribBanque;
     }
 
-    public void setRibBanque(int ribBanque) {
+    public void setRibBanque(String ribBanque) {
         this.ribBanque = ribBanque;
     }
 

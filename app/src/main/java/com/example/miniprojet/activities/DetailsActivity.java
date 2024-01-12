@@ -1,25 +1,21 @@
-package com.example.miniprojet;
+package com.example.miniprojet.activities;
 
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.database.Cursor;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.miniprojet.R;
 import com.example.miniprojet.model.Demandes;
 import com.example.miniprojet.model.DemandesHelper;
 
 public class DetailsActivity extends AppCompatActivity {
-    private static final int READ_EXTERNAL_STORAGE_PERMISSION_REQUEST_CODE = 123;
-    private static final int OPEN_DOCUMENT_REQUEST_CODE = 456;
     TextView idntType, idntNum, company_name, adress, activity, fiscale_num, rib, etat, demandeTitle;
     Button idntFile, contratFile, fiscaleFile, ribFile;
     ImageButton back;
@@ -42,19 +38,17 @@ public class DetailsActivity extends AppCompatActivity {
         Demandes data = db.getDemande(demandeId);
 
         try {
-            int numIdentiteValue = data.getNumIdentite();
-            int numFiscaleValue = data.getNumFiscale();
-            int ribBanqueValue = data.getRibBanque();
-
             String typeIdentite = data.getTypeIdentite();
-            String numIdentite = String.valueOf(numIdentiteValue);
+            String numIdentite = data.getNumIdentite();
             String nomEntreprise = data.getNomEntreprise();
             String adresse = data.getAdresse();
             String activityValue = data.getActivity();
-            String numFiscale = String.valueOf(numFiscaleValue);
-            String ribBanque = String.valueOf(ribBanqueValue);
-            String etatString = data.getEtat();  // Assuming etat is a String
+            String numFiscale = data.getNumFiscale();
+            String ribBanque = data.getRibBanque();
+            String etatString = data.getEtat();
             String demandeTitleString = data.getNomEntreprise();
+
+            System.out.println(ribBanque);
 
             idntType = findViewById(R.id.type_identite);
             idntNum = findViewById(R.id.num_identite);
@@ -92,5 +86,46 @@ public class DetailsActivity extends AppCompatActivity {
         contratFile = findViewById(R.id.contratFile);
         fiscaleFile = findViewById(R.id.fiscaleFile);
         ribFile = findViewById(R.id.ribFile);
+
+        idntFile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                downloadFile(data.getIdentitePath());
+            }
+        });
+
+        contratFile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                downloadFile(data.getContratEndroitPath());
+            }
+        });
+
+        fiscaleFile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                downloadFile(data.getFiscalePath());
+            }
+        });
+
+        ribFile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                downloadFile(data.getRibPath());
+            }
+        });
+    }
+
+    private void downloadFile(String uriString) {
+        Uri uri = Uri.parse(uriString);
+
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setDataAndType(uri, "application/pdf"); // You can set the MIME type based on the file type
+
+        try {
+            startActivity(intent);
+        } catch (ActivityNotFoundException e) {
+            System.out.println(e);
+        }
     }
 }

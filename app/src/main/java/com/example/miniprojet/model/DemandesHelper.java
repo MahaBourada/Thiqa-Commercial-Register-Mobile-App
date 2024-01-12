@@ -17,7 +17,7 @@ import java.util.Locale;
 import java.util.Random;
 
 public class DemandesHelper extends SQLiteOpenHelper {
-    private static final int DATABASE_VERSION = 8;
+    private static final int DATABASE_VERSION = 9;
     private static final String DATABASE_NAME = "RegistreCommerce";
     private static final String TABLE_DEMANDES = "Demandes";
     private static final String COLUMN_ID = "id";
@@ -45,12 +45,12 @@ public class DemandesHelper extends SQLiteOpenHelper {
         String CREATE_CONTACTS_TABLE = "CREATE TABLE " + TABLE_DEMANDES + "("
                 + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
                 + COLUMN_TYPE_IDNT + " TEXT,"
-                + COLUMN_NUM_IDNT + " INTEGER,"
+                + COLUMN_NUM_IDNT + " TEXT,"
                 + COLUMN_NOM + " TEXT,"
                 + COLUMN_ADRESSE + " TEXT,"
                 + COLUMN_ACTIVITY + " TEXT,"
-                + COLUMN_NUM_FISC + " INTEGER,"
-                + COLUMN_RIB + " INTEGER,"
+                + COLUMN_NUM_FISC + " TEXT,"
+                + COLUMN_RIB + " TEXT,"
                 + COLUMN_ETAT + " TEXT,"
                 + COLUMN_IDNT_PATH + " TEXT,"
                 + COLUMN_CONTRAT_PATH + " TEXT,"
@@ -94,7 +94,6 @@ public class DemandesHelper extends SQLiteOpenHelper {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                System.out.println("TESTING UPDATE ETAT");
                 updateEtat(rowId);
             }
         }, 10000); // 30 seconds delay
@@ -114,12 +113,12 @@ public class DemandesHelper extends SQLiteOpenHelper {
         if (cursor != null && cursor.moveToFirst()) {
             demande.setId(cursor.getInt(cursor.getColumnIndex(COLUMN_ID)));
             demande.setTypeIdentite(cursor.getString(cursor.getColumnIndex(COLUMN_TYPE_IDNT)));
-            demande.setNumIdentite(cursor.getInt(cursor.getColumnIndex(COLUMN_NUM_IDNT)));
+            demande.setNumIdentite(cursor.getString(cursor.getColumnIndex(COLUMN_NUM_IDNT)));
             demande.setNomEntreprise(cursor.getString(cursor.getColumnIndex(COLUMN_NOM)));
             demande.setAdresse(cursor.getString(cursor.getColumnIndex(COLUMN_ADRESSE)));
             demande.setActivity(cursor.getString(cursor.getColumnIndex(COLUMN_ACTIVITY)));
-            demande.setNumFiscale(cursor.getInt(cursor.getColumnIndex(COLUMN_NUM_FISC)));
-            demande.setRibBanque(cursor.getInt(cursor.getColumnIndex(COLUMN_RIB)));
+            demande.setNumFiscale(cursor.getString(cursor.getColumnIndex(COLUMN_NUM_FISC)));
+            demande.setRibBanque(cursor.getString(cursor.getColumnIndex(COLUMN_RIB)));
             demande.setEtat(cursor.getString(cursor.getColumnIndex(COLUMN_ETAT)));
             demande.setIdentitePath(cursor.getString(cursor.getColumnIndex(COLUMN_IDNT_PATH)));
             demande.setContratEndroitPath(cursor.getString(cursor.getColumnIndex(COLUMN_CONTRAT_PATH)));
@@ -128,6 +127,9 @@ public class DemandesHelper extends SQLiteOpenHelper {
 
             cursor.close();
         }
+
+        // Close database connection
+        db.close();
 
         return demande;
     }
@@ -150,6 +152,8 @@ public class DemandesHelper extends SQLiteOpenHelper {
                 contactList.add(demande);
             } while (cursor.moveToNext());
         }
+        // Close database connection
+        db.close();
         // return contact list
         return contactList;
     }

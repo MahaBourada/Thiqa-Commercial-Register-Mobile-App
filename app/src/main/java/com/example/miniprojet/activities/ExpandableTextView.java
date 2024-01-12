@@ -1,10 +1,12 @@
-package com.example.miniprojet;
+package com.example.miniprojet.activities;
 
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.example.miniprojet.R;
 
 public class ExpandableTextView extends LinearLayout {
     private TextView questionTextView;
