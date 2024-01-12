@@ -20,6 +20,16 @@
     tools:context=".activities.DashboardActivity"
     android:orientation="vertical">
 
+<ImageButton
+    android:id="@+id/logoutbtn"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="end"
+    android:src="@drawable/logout"
+    android:background="@android:color/transparent"
+    android:layout_marginVertical="21dp"
+    android:layout_marginHorizontal="21dp"
+    />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -31,26 +41,44 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Bienvenue"
-            android:textSize="40sp"
-            android:layout_marginTop="60dp"
+            android:textSize="28sp"
             android:layout_marginHorizontal="35dp"
             android:textColor="@color/black"
             android:fontFamily="@font/aleo"
             android:textStyle="bold"
             />
 
-        <TextView
-            android:id="@+id/user"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="nom + prénom"
-            android:textSize="40sp"
-            android:layout_marginBottom="60dp"
-            android:layout_marginHorizontal="35dp"
-            android:textColor="@color/black"
-            android:fontFamily="@font/aleo"
-            android:textStyle="bold"
-            />
+            android:orientation="horizontal"
+            android:layout_marginBottom="30dp">
+
+            <TextView
+                android:id="@+id/firstNameTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="prénom"
+                android:textSize="28sp"
+                android:layout_marginStart="35dp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/aleo"
+                android:textStyle="bold"
+                />
+
+            <TextView
+                android:id="@+id/lastNameTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="nom"
+                android:textSize="28sp"
+                android:layout_marginStart="5dp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/aleo"
+                android:textStyle="bold"
+                />
+
+        </LinearLayout>
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/creer"

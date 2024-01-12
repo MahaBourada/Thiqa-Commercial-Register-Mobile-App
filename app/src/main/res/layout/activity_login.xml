@@ -47,10 +47,8 @@
             android:paddingHorizontal="20dp"
             android:paddingVertical="15dp"
             android:fontFamily="@font/aleo"
-            android:inputType="number"
             android:textColorHint="#666"
-            android:textStyle="bold"
-            android:maxLength="9"/>
+            android:textStyle="bold"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -69,10 +67,9 @@
             android:paddingHorizontal="20dp"
             android:paddingVertical="15dp"
             android:fontFamily="@font/aleo"
-            android:inputType="number"
+            android:inputType="textPassword"
             android:textColorHint="#666"
-            android:textStyle="bold"
-            android:maxLength="9"/>
+            android:textStyle="bold"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "923131030335",
+    "project_id": "dam-mini-projet",
+    "storage_bucket": "dam-mini-projet.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:923131030335:android:0835fff6f5f87d27b6818a",
+        "android_client_info": {
+          "package_name": "com.example.miniprojet"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDn-TSpsNm6Q7heFfvATCB0vqfvQkShir8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

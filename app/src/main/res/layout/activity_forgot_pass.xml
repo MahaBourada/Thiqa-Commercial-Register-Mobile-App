@@ -47,10 +47,8 @@
                 android:paddingHorizontal="20dp"
                 android:paddingVertical="15dp"
                 android:fontFamily="@font/aleo"
-                android:inputType="number"
                 android:textColorHint="#666"
-                android:textStyle="bold"
-                android:maxLength="9"/>
+                android:textStyle="bold"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -59,7 +57,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Réinitialiser le mot de passe"
-            android:textSize="19sp"
+            android:textSize="15sp"
             android:layout_marginHorizontal="50dp"
             android:layout_marginTop="42dp"
             android:paddingVertical="10dp"

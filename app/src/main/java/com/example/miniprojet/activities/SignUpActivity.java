@@ -136,10 +136,7 @@ public class SignUpActivity extends Activity {
                 // Create a User object with the retrieved information
                 User newUser = new User(firstName, lastName, email, password, phoneNumberStr);
 
-
-
-                firebaseAuth.createUserWithEmailAndPassword(email, password)
-                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                firebaseAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
