@@ -4,7 +4,6 @@ import static android.content.ContentValues.TAG;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -27,9 +26,6 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.ValueEventListener;
 
 public class SignUpActivity extends Activity {
     EditText editEmail, editPass, editFirstName, editLastName, phoneNumber, repeatPassword;
@@ -126,10 +122,6 @@ public class SignUpActivity extends Activity {
                     return;
                 }
 
-                // Proceed with user registration
-                // Using push to generate a unique ID for each user
-                // String userId = userRef.push().getKey();
-
                 // Create a User object with the retrieved information
                 User newUser = new User(firstName, lastName, email, password, phoneNumberStr);
 
@@ -140,9 +132,6 @@ public class SignUpActivity extends Activity {
                         if (task.isSuccessful()) {
                             FirebaseUser user = firebaseAuth.getCurrentUser();
                             Toast.makeText(SignUpActivity.this, "Inscription réussie", Toast.LENGTH_SHORT).show();
-
-                            // Save user's UID to SharedPreferences upon successful registration
-                            //saveUserIdToSharedPreferences(user.getUid());
 
                             String userId = user.getUid();
                             // Save user information to the Realtime Database
@@ -160,14 +149,6 @@ public class SignUpActivity extends Activity {
         });
     }
 
-    // Save user's UID to SharedPreferences
-//    private void saveUserIdToSharedPreferences(String userId) {
-//        SharedPreferences preferences = getSharedPreferences("user", MODE_PRIVATE);
-//        SharedPreferences.Editor editor = preferences.edit();
-//        editor.putString("uid", userId);
-//        editor.apply();
-//    }
-
     private boolean isValidEmail(String email) {
         // Use a regex pattern for basic email validation
         String emailRegex = "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Z|a-z]{2,}$";
@@ -176,7 +157,8 @@ public class SignUpActivity extends Activity {
 
     private boolean isValidAlgerianPhoneNumber(String phoneNumber) {
         // Use a regex pattern for Algerian phone number validation
-        String phoneRegex = "^(00213|\\+213|0)(5|6|7)[0-9]{8}$";
+        //String phoneRegex = "^(00213|\\+213|0)(5|6|7)[0-9]{8}$";
+        String phoneRegex = "^(00213|0)(5|6|7)[0-9]{8}$";
         return phoneNumber.matches(phoneRegex);
     }
 }

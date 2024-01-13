@@ -48,7 +48,9 @@
             android:paddingVertical="15dp"
             android:fontFamily="@font/aleo"
             android:textColorHint="#666"
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            android:inputType="text"
+            android:maxLines="1"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -69,7 +71,8 @@
             android:fontFamily="@font/aleo"
             android:inputType="textPassword"
             android:textColorHint="#666"
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            android:maxLines="1"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 

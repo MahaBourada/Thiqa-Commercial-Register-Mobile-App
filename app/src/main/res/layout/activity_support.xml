@@ -62,34 +62,47 @@
             android:fontFamily="@font/aleo"
             />
 
-    <EditText
-        android:id="@+id/objet"
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Objet"
-        android:textColorHint="#777"
-        android:background="@drawable/input_background"
-        android:paddingHorizontal="20dp"
-        android:paddingVertical="15dp"
         android:layout_marginTop="23dp"
         android:layout_marginHorizontal="26dp"
-        android:fontFamily="@font/aleo"
-        />
+        android:hint="Objet de l'e-mail"
+        style="@style/MyTextInputLayout" >
 
-    <EditText
-        android:id="@+id/contenu"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/objet"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="15dp"
+            android:fontFamily="@font/aleo"
+            android:textColorHint="#666"
+            android:textStyle="bold"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:hint="Contenu"
-        android:textColorHint="#777"
-        android:background="@drawable/input_background"
-        android:paddingHorizontal="20dp"
-        android:paddingVertical="15dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="23dp"
         android:layout_marginHorizontal="26dp"
-        android:gravity="start"
-        android:fontFamily="@font/aleo"
-        />
+        android:hint="Contenu de l'e-mail"
+        style="@style/MyTextInputLayout" >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/contenu"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="17dp"
+            android:fontFamily="@font/aleo"
+            android:textColorHint="#666"
+            android:textStyle="bold"
+            android:gravity="start"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/send_email"

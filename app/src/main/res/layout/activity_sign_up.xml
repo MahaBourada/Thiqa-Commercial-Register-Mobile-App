@@ -52,7 +52,9 @@
                 android:paddingVertical="15dp"
                 android:fontFamily="@font/aleo"
                 android:textColorHint="#666"
-                android:textStyle="bold"/>
+                android:textStyle="bold"
+                android:maxLines="1"
+                android:inputType="text"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -115,7 +117,9 @@
                 android:fontFamily="@font/aleo"
                 android:textColorHint="#666"
                 android:textStyle="bold"
-                android:maxLength="13"/>
+                android:inputType="number"
+                android:maxLength="14"
+                android:maxLines="1"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -137,7 +141,8 @@
                 android:inputType="textPassword"
                 android:textColorHint="#666"
                 android:textStyle="bold"
-                android:maxLength="9"/>
+                android:maxLength="9"
+                android:maxLines="1"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -159,7 +164,8 @@
                 android:inputType="textPassword"
                 android:textColorHint="#666"
                 android:textStyle="bold"
-                android:maxLength="9"/>
+                android:maxLength="9"
+                android:maxLines="1"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 

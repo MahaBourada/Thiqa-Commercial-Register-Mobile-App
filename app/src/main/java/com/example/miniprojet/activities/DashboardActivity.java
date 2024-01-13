@@ -11,12 +11,12 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.miniprojet.customAdapters.CustomDemandeAdapter;
 import com.example.miniprojet.R;
 import com.example.miniprojet.model.Demandes;
-import com.example.miniprojet.model.DemandesHelper;
 import com.example.miniprojet.model.User;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -38,13 +38,14 @@ public class DashboardActivity extends AppCompatActivity {
     private DatabaseReference usersRef, demandesRef;
     List<Demandes> demandesList;
     CustomDemandeAdapter adapter;
+    RelativeLayout loading_screen;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
-        Log.d("Debug", "onCreate: Home activity created");
+        loading_screen = findViewById(R.id.loading_screen);
 
         firebaseAuth = FirebaseAuth.getInstance();
         FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
@@ -57,11 +58,11 @@ public class DashboardActivity extends AppCompatActivity {
         // Check if the user is authenticated
         if (firebaseUser != null) {
             String userId = firebaseUser.getUid(); // No change here
-            Log.d("MyApp1", "User ID: " + userId);
+
+            loading_screen.setVisibility(View.VISIBLE);
 
             // DatabaseReference pointing to the specific user's node in the Realtime Database
             usersRef = FirebaseDatabase.getInstance().getReference().child("users").child(userId);
-            Log.d("MyApp2", "User ID: " + userId);
             // Use addValueEventListener to continuously listen for changes to user data
             usersRef.addValueEventListener(new ValueEventListener() {
                 @Override
@@ -74,18 +75,19 @@ public class DashboardActivity extends AppCompatActivity {
                             String firstName = user.getFirstName();
                             String lastName = user.getLastName();
 
-                            Log.d("Debug", "FETCH DATA FROM DB FIRE User info: " + ", FirstName=" + user.getFirstName() + ", LastName=" + user.getLastName());
-
                             firstNameTextView.setText(firstName);
                             lastNameTextView.setText(lastName);
                         } else {
                             Log.d(TAG, "No such document");
                         }
                     }
+
+                    loading_screen.setVisibility(View.GONE);
                 }
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
+                    loading_screen.setVisibility(View.GONE);
                     Log.w(TAG, "Failed to read value.", error.toException());
                 }
             });
