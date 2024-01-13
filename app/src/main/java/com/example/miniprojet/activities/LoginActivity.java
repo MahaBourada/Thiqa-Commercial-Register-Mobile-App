@@ -74,38 +74,37 @@ public class LoginActivity extends AppCompatActivity {
                     return;
                 }
 
-                firebaseAuth.signInWithEmailAndPassword(email, password)
-                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                if (task.isSuccessful()) {
-                                    // Save user's UID to SharedPreferences upon successful login
-                                    FirebaseUser user = firebaseAuth.getCurrentUser();
-                                    if (user != null) {
-                                        String uid = user.getUid();
-//                                        SharedPreferences preferences = getSharedPreferences("user", MODE_PRIVATE);
-//                                        SharedPreferences.Editor editor = preferences.edit();
-//                                        editor.putString("uid", uid);
-//                                        editor.apply();
-                                        Log.w("IdLogin", uid, task.getException());
-                                        Toast.makeText(LoginActivity.this, "Id is saved on login preferences", Toast.LENGTH_SHORT).show();
-                                    }
-
-                                    Toast.makeText(LoginActivity.this, "Connexion réussie", Toast.LENGTH_SHORT).show();
-                                    Intent i = new Intent(LoginActivity.this, DashboardActivity.class);
-                                    startActivity(i);
-                                } else {
-                                    Log.w(TAG, "signInWithEmail:failure", task.getException());
-                                    Toast.makeText(LoginActivity.this, "Authentification échouée: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                                    Exception exception = task.getException();
-                                    if (exception != null) {
-                                        // Log or display the exception message
-                                        String errorMessage = exception.getMessage();
-                                        // Handle the error message
-                                    }
-                                }
+                firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            // Save user's UID to SharedPreferences upon successful login
+                            FirebaseUser user = firebaseAuth.getCurrentUser();
+                            if (user != null) {
+                                String uid = user.getUid();
+//                              SharedPreferences preferences = getSharedPreferences("user", MODE_PRIVATE);
+//                              SharedPreferences.Editor editor = preferences.edit();
+//                              editor.putString("uid", uid);
+//                              editor.apply();
+                                Log.w("IdLogin", uid, task.getException());
+                                //Toast.makeText(LoginActivity.this, "Id is saved on login preferences", Toast.LENGTH_SHORT).show();
                             }
-                        });
+
+                            //Toast.makeText(LoginActivity.this, "Connexion réussie", Toast.LENGTH_SHORT).show();
+                            Intent i = new Intent(LoginActivity.this, DashboardActivity.class);
+                            startActivity(i);
+                        } else {
+                            Log.w(TAG, "signInWithEmail:failure", task.getException());
+                            Toast.makeText(LoginActivity.this, "Authentification échouée: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                            Exception exception = task.getException();
+                            if (exception != null) {
+                                // Log or display the exception message
+                                String errorMessage = exception.getMessage();
+                                // Handle the error message
+                            }
+                        }
+                    }
+                });
             }
         });
     }

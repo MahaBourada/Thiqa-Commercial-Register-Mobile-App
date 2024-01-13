@@ -1,7 +1,9 @@
 package com.example.miniprojet.customAdapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,11 +11,14 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.example.miniprojet.R;
+import com.example.miniprojet.activities.DetailsActivity;
 import com.example.miniprojet.model.Demandes;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.List;
 
 public class CustomDemandeAdapter extends BaseAdapter {
+    private static final String TAG = "Custom Adapater ACTIVITY";
     private Context context;
     private List<Demandes> demandesList;
 
@@ -38,7 +43,8 @@ public class CustomDemandeAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(final int position, View convertView, ViewGroup parent) {
+    public View getView(int position, View convertView, ViewGroup parent) {
+        Log.d("Debug", "TESTING");
         if (convertView == null) {
             convertView = LayoutInflater.from(context).inflate(R.layout.list_item_demande, parent, false);
         }
@@ -51,15 +57,34 @@ public class CustomDemandeAdapter extends BaseAdapter {
         // Set entreprise name
         entrepriseName.setText(demande.getNomEntreprise());
 
-        if(demande.getEtat().equals("En cours de traitement")) {
-            etat.setTextColor(Color.argb(255, 208,109,17));
-        } else if(demande.getEtat().equals("Demande acceptée")) {
-            etat.setTextColor(Color.argb(255, 14, 107, 12));
-        } else if(demande.getEtat().equals("Demande refusée")) {
-            etat.setTextColor(Color.argb(255, 178, 22, 22));
+        // Check if etat is not null before comparing
+        if (demande.getEtat() != null) {
+            if (demande.getEtat().equals("En cours de traitement")) {
+                etat.setTextColor(Color.argb(255, 208, 109, 17));
+            } else if (demande.getEtat().equals("Demande acceptée")) {
+                etat.setTextColor(Color.argb(255, 14, 107, 12));
+            } else if (demande.getEtat().equals("Demande refusée")) {
+                etat.setTextColor(Color.argb(255, 178, 22, 22));
+            }
+            // Set etat
+            etat.setText(demande.getEtat()); // Display the status directly
+        } else {
+            // Handle the case where etat is null (you may set a default value or handle it based on your logic)
+            etat.setText("N/A");
         }
-        // Set etat
-        etat.setText(demande.getEtat()); // Display the status directly
+
+        convertView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Get the clicked Demand object
+                Demandes clickedDemande = (Demandes) getItem(position);
+
+                // Start the DetailsActivity and pass the demand details
+                Intent intent = new Intent(context, DetailsActivity.class);
+                intent.putExtra("demandes", clickedDemande);
+                context.startActivity(intent);
+            }
+        });
 
         return convertView;
     }

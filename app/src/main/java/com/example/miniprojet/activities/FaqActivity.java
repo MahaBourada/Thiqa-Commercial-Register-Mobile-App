@@ -8,6 +8,7 @@ import android.widget.ImageButton;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.miniprojet.R;
+import com.example.miniprojet.customAdapters.ExpandableTextView;
 
 public class FaqActivity extends AppCompatActivity {
     private ImageButton back;

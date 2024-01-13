@@ -111,7 +111,7 @@ public class DemandesHelper extends SQLiteOpenHelper {
         Demandes demande = new Demandes();
 
         if (cursor != null && cursor.moveToFirst()) {
-            demande.setId(cursor.getInt(cursor.getColumnIndex(COLUMN_ID)));
+            //demande.setId(cursor.getInt(cursor.getColumnIndex(COLUMN_ID)));
             demande.setTypeIdentite(cursor.getString(cursor.getColumnIndex(COLUMN_TYPE_IDNT)));
             demande.setNumIdentite(cursor.getString(cursor.getColumnIndex(COLUMN_NUM_IDNT)));
             demande.setNomEntreprise(cursor.getString(cursor.getColumnIndex(COLUMN_NOM)));
@@ -145,7 +145,7 @@ public class DemandesHelper extends SQLiteOpenHelper {
         if (cursor.moveToFirst()) {
             do {
                 Demandes demande = new Demandes();
-                demande.setId(Integer.parseInt(cursor.getString(0)));
+                //demande.setId(Integer.parseInt(cursor.getString(0)));
                 demande.setNomEntreprise(cursor.getString(3));
                 demande.setEtat(cursor.getString(8));
                 // Adding contact to list

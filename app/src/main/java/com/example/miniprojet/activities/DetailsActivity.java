@@ -5,18 +5,26 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.miniprojet.R;
 import com.example.miniprojet.model.Demandes;
 import com.example.miniprojet.model.DemandesHelper;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class DetailsActivity extends AppCompatActivity {
-    TextView idntType, idntNum, company_name, adress, activity, fiscale_num, rib, etat, demandeTitle;
+    TextView idntType, idntNum, company_name, adress, activity, fiscale_num, rib, etat, demande_title;
     Button idntFile, contratFile, fiscaleFile, ribFile;
     ImageButton back;
     @Override
@@ -33,53 +41,39 @@ public class DetailsActivity extends AppCompatActivity {
             }
         });
 
-        DemandesHelper db = new DemandesHelper(this);
-        int demandeId = getIntent().getIntExtra("demandeId", -1);
-        Demandes data = db.getDemande(demandeId);
+        Intent intent = getIntent();
+        Demandes demande = (Demandes) intent.getSerializableExtra("demandes");
+        if (intent != null && intent.hasExtra("demandes")) {
 
-        try {
-            String typeIdentite = data.getTypeIdentite();
-            String numIdentite = data.getNumIdentite();
-            String nomEntreprise = data.getNomEntreprise();
-            String adresse = data.getAdresse();
-            String activityValue = data.getActivity();
-            String numFiscale = data.getNumFiscale();
-            String ribBanque = data.getRibBanque();
-            String etatString = data.getEtat();
-            String demandeTitleString = data.getNomEntreprise();
-
-            System.out.println(ribBanque);
-
+            // Access demand properties and set them in your UI elements
+            demande_title = findViewById(R.id.companyName);
+            company_name = findViewById(R.id.nom_entreprise);
             idntType = findViewById(R.id.type_identite);
             idntNum = findViewById(R.id.num_identite);
-            company_name = findViewById(R.id.nom_entreprise);
             adress = findViewById(R.id.adresse);
             activity = findViewById(R.id.activite);
             fiscale_num = findViewById(R.id.num_fiscale);
             rib = findViewById(R.id.rib);
             etat = findViewById(R.id.etat);
-            demandeTitle = findViewById(R.id.companyName);
 
-            if(data.getEtat().equals("En cours de traitement")) {
-                etat.setTextColor(Color.argb(255, 208,109,17));
-            } else if(data.getEtat().equals("Demande acceptée")) {
+            company_name.setText(demande.getNomEntreprise());
+            demande_title.setText(demande.getNomEntreprise());
+            idntType.setText(demande.getTypeIdentite());
+            idntNum.setText(demande.getNumIdentite());
+            adress.setText(demande.getAdresse());
+            activity.setText(demande.getActivity());
+            fiscale_num.setText(demande.getNumFiscale());
+            rib.setText(demande.getRibBanque());
+
+            if (demande.getEtat().equals("En cours de traitement")) {
+                etat.setTextColor(Color.argb(255, 208, 109, 17));
+            } else if (demande.getEtat().equals("Demande acceptée")) {
                 etat.setTextColor(Color.argb(255, 14, 107, 12));
-            } else if(data.getEtat().equals("Demande refusée")) {
+            } else if (demande.getEtat().equals("Demande refusée")) {
                 etat.setTextColor(Color.argb(255, 178, 22, 22));
             }
 
-            idntType.setText(typeIdentite);
-            idntNum.setText(numIdentite);
-            company_name.setText(nomEntreprise);
-            adress.setText(adresse);
-            activity.setText(activityValue);
-            fiscale_num.setText(numFiscale);
-            rib.setText(ribBanque);
-            etat.setText(etatString);
-            demandeTitle.setText(demandeTitleString);
-
-        } catch (NumberFormatException e) {
-            e.printStackTrace();
+            etat.setText(demande.getEtat());
         }
 
         idntFile = findViewById(R.id.idntFile);
@@ -90,28 +84,28 @@ public class DetailsActivity extends AppCompatActivity {
         idntFile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                downloadFile(data.getIdentitePath());
+                downloadFile(demande.getIdentitePath());
             }
         });
 
         contratFile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                downloadFile(data.getContratEndroitPath());
+                downloadFile(demande.getContratEndroitPath());
             }
         });
 
         fiscaleFile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                downloadFile(data.getFiscalePath());
+                downloadFile(demande.getFiscalePath());
             }
         });
 
         ribFile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                downloadFile(data.getRibPath());
+                downloadFile(demande.getRibPath());
             }
         });
     }

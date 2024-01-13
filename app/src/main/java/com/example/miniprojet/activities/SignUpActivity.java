@@ -35,7 +35,6 @@ public class SignUpActivity extends Activity {
     EditText editEmail, editPass, editFirstName, editLastName, phoneNumber, repeatPassword;
     Button btnsinsc;
     TextView conxlink;
-
     FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
     DatabaseReference userRef;
 
@@ -102,8 +101,6 @@ public class SignUpActivity extends Activity {
                     return;
                 }
 
-
-
                 if (password.length() < 6) {
                     Toast.makeText(SignUpActivity.this, "Le mot de passe doit contenir au moins 6 caractères", Toast.LENGTH_SHORT).show();
                     return;
@@ -136,28 +133,29 @@ public class SignUpActivity extends Activity {
                 // Create a User object with the retrieved information
                 User newUser = new User(firstName, lastName, email, password, phoneNumberStr);
 
+
                 firebaseAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                if (task.isSuccessful()) {
-                                    FirebaseUser user = firebaseAuth.getCurrentUser();
-                                    Toast.makeText(SignUpActivity.this, "Inscription réussie", Toast.LENGTH_SHORT).show();
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            FirebaseUser user = firebaseAuth.getCurrentUser();
+                            Toast.makeText(SignUpActivity.this, "Inscription réussie", Toast.LENGTH_SHORT).show();
 
-                                    // Save user's UID to SharedPreferences upon successful registration
-                                    //saveUserIdToSharedPreferences(user.getUid());
+                            // Save user's UID to SharedPreferences upon successful registration
+                            //saveUserIdToSharedPreferences(user.getUid());
 
-                                    String userId = user.getUid();
-                                    // Save user information to the Realtime Database
-                                    userRef.child(userId).setValue(newUser);
-                                    Log.d("USER ID WHEN SIGN UP", "User ID: " + userId);
-                                    Intent i = new Intent(SignUpActivity.this, LoginActivity.class);
-                                    startActivity(i);
-                                } else {
-                                    Log.w(TAG, "createUserWithEmail:failure", task.getException());
-                                    Toast.makeText(SignUpActivity.this, "Échec de l'enregistrement" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                                }
-                            }
-                        });
+                            String userId = user.getUid();
+                            // Save user information to the Realtime Database
+                            userRef.child(userId).setValue(newUser);
+                            Log.d("USER ID WHEN SIGN UP", "User ID: " + userId);
+                            Intent i = new Intent(SignUpActivity.this, LoginActivity.class);
+                            startActivity(i);
+                        } else {
+                            Log.w(TAG, "createUserWithEmail:failure", task.getException());
+                            Toast.makeText(SignUpActivity.this, "Échec de l'enregistrement" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
             }
         });
     }

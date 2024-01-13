@@ -1,4 +1,4 @@
-package com.example.miniprojet.activities;
+package com.example.miniprojet.customAdapters;
 
 import android.content.Context;
 import android.util.AttributeSet;
