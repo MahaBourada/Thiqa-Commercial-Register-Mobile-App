@@ -21,16 +21,12 @@
     tools:context=".activities.DashboardActivity"
     android:orientation="vertical">
 
-<ImageButton
-    android:id="@+id/logoutbtn"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_gravity="end"
-    android:src="@drawable/logout"
-    android:background="@android:color/transparent"
-    android:layout_marginVertical="21dp"
-    android:layout_marginHorizontal="21dp"
-    />
+    <ImageView
+        android:layout_width="60dp"
+        android:layout_height="62.93dp"
+        android:src="@drawable/trustlogo_final"
+        android:layout_gravity="center"
+        android:layout_marginVertical="17dp"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -42,7 +38,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Bienvenue"
-            android:textSize="28sp"
+            android:textSize="33sp"
             android:layout_marginHorizontal="35dp"
             android:textColor="@color/black"
             android:fontFamily="@font/aleo"
@@ -60,7 +56,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="prénom"
-                android:textSize="28sp"
+                android:textSize="33sp"
                 android:layout_marginStart="35dp"
                 android:textColor="@color/black"
                 android:fontFamily="@font/aleo"
@@ -72,7 +68,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="nom"
-                android:textSize="28sp"
+                android:textSize="33sp"
                 android:layout_marginStart="5dp"
                 android:textColor="@color/black"
                 android:fontFamily="@font/aleo"
@@ -143,7 +139,10 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_marginBottom="20dp"
-        android:layout_gravity="bottom">
+        android:layout_gravity="bottom"
+        android:background="@drawable/menu_background"
+        android:layout_marginHorizontal="20dp"
+        android:paddingVertical="9dp">
 
         <ImageButton
             android:id="@+id/faqButton"
@@ -152,7 +151,20 @@
             android:src="@drawable/faq"
             android:contentDescription="FAQ"
             android:background="@android:color/transparent"
-            android:layout_marginStart="20dp" />
+            android:layout_marginStart="10dp" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+
+        <ImageButton
+            android:id="@+id/profile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/profile"
+            android:contentDescription="Client support"
+            android:background="@android:color/transparent" />
 
         <Space
             android:layout_width="0dp"
@@ -165,8 +177,23 @@
             android:layout_height="wrap_content"
             android:src="@drawable/client_support"
             android:contentDescription="Client support"
+            android:background="@android:color/transparent" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+
+        <ImageButton
+            android:id="@+id/logoutbtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/logout"
+            android:contentDescription="Client support"
             android:background="@android:color/transparent"
-            android:layout_marginEnd="20dp" />
+            android:layout_marginEnd="10dp" />
+
+
     </LinearLayout>
 
 </LinearLayout>

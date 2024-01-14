@@ -43,7 +43,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Contactez-nous"
-            android:textSize="30sp"
+            android:textSize="28sp"
             android:layout_marginTop="20dp"
             android:layout_marginHorizontal="35dp"
             android:textColor="@color/black"
@@ -65,7 +65,6 @@
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="23dp"
         android:layout_marginHorizontal="26dp"
         android:hint="Objet de l'e-mail"
         style="@style/MyTextInputLayout" >
@@ -128,7 +127,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="45dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="20dp"
         android:fontFamily="@font/aleo"
         android:text="Ou vous pouvez nous contactez via téléphone"
         android:textColor="@color/black"

@@ -22,15 +22,26 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         tools:context=".activities.DashboardActivity"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:background="@drawable/white_backgroung"
+        android:layout_marginHorizontal="25dp"
+        android:layout_marginVertical="40dp"
+        android:gravity="center">
+
+        <ImageView
+            android:layout_width="140dp"
+            android:layout_height="146.834dp"
+            android:src="@drawable/trustlogo_final"
+            android:layout_gravity="center"
+            android:layout_marginTop="17dp"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Créer un compte"
-            android:textSize="40sp"
-            android:layout_marginTop="100dp"
-            android:layout_marginHorizontal="35dp"
+            android:textSize="33sp"
+            android:layout_marginVertical="15dp"
+            android:layout_gravity="center"
             android:textColor="@color/black"
             android:fontFamily="@font/aleo"
             android:textStyle="bold"
@@ -39,8 +50,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="23dp"
-            android:layout_marginHorizontal="26dp"
+            android:layout_marginHorizontal="20dp"
             android:hint="Adresse e-mail"
             style="@style/MyTextInputLayout" >
 
@@ -61,8 +71,8 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="23dp"
-            android:layout_marginHorizontal="26dp"
+            android:layout_marginTop="13dp"
+            android:layout_marginHorizontal="20dp"
             android:hint="Prénom"
             style="@style/MyTextInputLayout" >
 
@@ -82,8 +92,8 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="23dp"
-            android:layout_marginHorizontal="26dp"
+            android:layout_marginTop="13dp"
+            android:layout_marginHorizontal="20dp"
             android:hint="Nom de famille"
             style="@style/MyTextInputLayout" >
 
@@ -103,8 +113,8 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="23dp"
-            android:layout_marginHorizontal="26dp"
+            android:layout_marginTop="13dp"
+            android:layout_marginHorizontal="20dp"
             android:hint="Numéro de téléphone"
             style="@style/MyTextInputLayout" >
 
@@ -126,8 +136,8 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="23dp"
-            android:layout_marginHorizontal="26dp"
+            android:layout_marginTop="13dp"
+            android:layout_marginHorizontal="20dp"
             android:hint="Mot de passe"
             style="@style/MyTextInputLayout" >
 
@@ -149,8 +159,8 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="23dp"
-            android:layout_marginHorizontal="26dp"
+            android:layout_marginTop="13dp"
+            android:layout_marginHorizontal="20dp"
             android:hint="Répéter mot de passe"
             style="@style/MyTextInputLayout" >
 
@@ -174,11 +184,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="J'accepte les conditions d'utilisation."
-            android:layout_marginTop="5dp"
-            android:layout_gravity="start"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="20dp"
             android:textSize="16sp"
             android:textColor="@color/black"
-            android:layout_marginHorizontal="40dp"
             android:paddingHorizontal="8dp"
             android:fontFamily="@font/aleo"
             />
@@ -206,7 +215,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:orientation="horizontal"
-            android:layout_marginVertical="40dp">
+            android:layout_marginTop="26dp"
+            android:layout_marginBottom="60dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -216,7 +226,6 @@
                 android:layout_marginEnd="5dp"
                 android:textColor="@color/black"
                 android:fontFamily="@font/aleo"
-                android:textStyle="bold"
                 />
 
             <TextView
@@ -230,7 +239,6 @@
                 android:textStyle="bold"
                 />
         </LinearLayout>
-
     </LinearLayout>
     </ScrollView>
 </FrameLayout>

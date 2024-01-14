@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -46,10 +47,10 @@
             android:layout_height="wrap_content"
             android:textSize="28sp"
             android:layout_marginHorizontal="35dp"
-            android:layout_marginBottom="40dp"
             android:textColor="@color/black"
             android:fontFamily="@font/aleo"
             android:textStyle="bold"
+            android:text="Test"
             />
 
         <TextView
@@ -75,8 +76,7 @@
             android:textColor="@color/black"
             android:fontFamily="@font/aleo"
             android:textStyle="bold"
-            android:drawableEnd="@drawable/edit"
-            />
+            app:drawableEndCompat="@drawable/edit" />
 
         <TextView
             android:layout_width="match_parent"
