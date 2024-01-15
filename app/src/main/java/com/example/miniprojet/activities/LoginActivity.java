@@ -66,11 +66,11 @@ public class LoginActivity extends AppCompatActivity {
                 password = String.valueOf(editPass.getText());
 
                 if (TextUtils.isEmpty(email)) {
-                    Toast.makeText(LoginActivity.this, "Entrer Un Email", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, "Veuillez entrer un e-mail", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 if (TextUtils.isEmpty(password)) {
-                    Toast.makeText(LoginActivity.this, "Entrer Un Password", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, "Veuillez entrer un mot de passe", Toast.LENGTH_SHORT).show();
                     return;
                 }
 

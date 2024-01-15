@@ -38,7 +38,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Bienvenue"
-            android:textSize="33sp"
+            android:textSize="30sp"
             android:layout_marginHorizontal="35dp"
             android:textColor="@color/black"
             android:fontFamily="@font/aleo"
@@ -56,7 +56,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="prénom"
-                android:textSize="33sp"
+                android:textSize="26sp"
                 android:layout_marginStart="35dp"
                 android:textColor="@color/black"
                 android:fontFamily="@font/aleo"
@@ -68,8 +68,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="nom"
-                android:textSize="33sp"
-                android:layout_marginStart="5dp"
+                android:textSize="26sp"
+                android:layout_marginStart="2dp"
                 android:textColor="@color/black"
                 android:fontFamily="@font/aleo"
                 android:textStyle="bold"
@@ -159,10 +159,10 @@
             android:layout_weight="1"/>
 
         <ImageButton
-            android:id="@+id/profile"
+            android:id="@+id/clientSupportButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/profile"
+            android:src="@drawable/client_support"
             android:contentDescription="Client support"
             android:background="@android:color/transparent" />
 
@@ -172,10 +172,10 @@
             android:layout_weight="1"/>
 
         <ImageButton
-            android:id="@+id/clientSupportButton"
+            android:id="@+id/profile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/client_support"
+            android:src="@drawable/profile"
             android:contentDescription="Client support"
             android:background="@android:color/transparent" />
 

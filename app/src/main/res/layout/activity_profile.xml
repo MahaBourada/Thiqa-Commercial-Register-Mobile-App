@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:adjustViewBounds="true"
+        android:maxHeight="0dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/backgrounddrawing" />
+    <ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <ImageButton
+                android:id="@+id/back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:layout_marginTop="30dp"
+                android:layout_marginStart="22dp"
+                android:src="@drawable/back"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Profile"
+                android:textSize="28sp"
+                android:layout_marginVertical="20dp"
+                android:layout_marginHorizontal="35dp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/aleo"
+                android:textStyle="bold"
+                android:drawableEnd="@drawable/profile"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Adresse e-mail"
+                android:textSize="20sp"
+                android:layout_marginHorizontal="42dp"
+                android:layout_marginBottom="5dp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/aleo"
+                android:textStyle="bold"
+                />
+
+            <TextView
+                android:id="@+id/email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginBottom="20dp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/aleo"
+                android:background="@drawable/input_background"
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="15dp"
+                android:textStyle="bold"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Prénom"
+                android:textSize="20sp"
+                android:layout_marginHorizontal="42dp"
+                android:layout_marginBottom="5dp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/aleo"
+                android:textStyle="bold"
+                />
+
+            <TextView
+                android:id="@+id/prenom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginBottom="20dp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/aleo"
+                android:background="@drawable/input_background"
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="15dp"
+                android:textStyle="bold"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Nom de famille"
+                android:textSize="20sp"
+                android:layout_marginHorizontal="42dp"
+                android:layout_marginBottom="5dp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/aleo"
+                android:textStyle="bold"
+                />
+
+            <TextView
+                android:id="@+id/nomfamille"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginBottom="20dp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/aleo"
+                android:background="@drawable/input_background"
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="15dp"
+                android:textStyle="bold"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Numéro de téléphone"
+                android:textSize="20sp"
+                android:layout_marginHorizontal="42dp"
+                android:layout_marginBottom="5dp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/aleo"
+                android:textStyle="bold"
+                />
+
+            <TextView
+                android:id="@+id/tel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginBottom="20dp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/aleo"
+                android:background="@drawable/input_background"
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="15dp"
+                android:textStyle="bold"
+                />
+
+        </LinearLayout>
+    </ScrollView>
+</FrameLayout>

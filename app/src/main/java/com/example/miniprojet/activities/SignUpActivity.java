@@ -31,6 +31,7 @@ public class SignUpActivity extends Activity {
     EditText editEmail, editPass, editFirstName, editLastName, phoneNumber, repeatPassword;
     Button btnsinsc;
     TextView conxlink;
+    CheckBox termsCheckbox;
     FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
     DatabaseReference userRef;
 
@@ -40,6 +41,8 @@ public class SignUpActivity extends Activity {
         setContentView(R.layout.activity_sign_up);
 
         FirebaseApp.initializeApp(this);
+
+        termsCheckbox = findViewById(R.id.terms_checkbox);
 
         editEmail = findViewById(R.id.email);
         editPass = findViewById(R.id.mdp);
@@ -68,7 +71,6 @@ public class SignUpActivity extends Activity {
                 String firstName = String.valueOf(editFirstName.getText());
                 String phoneNumberStr = String.valueOf(phoneNumber.getText());
                 String lastName = String.valueOf(editLastName.getText());
-                CheckBox termsCheckbox = findViewById(R.id.terms_checkbox);
 
                 if (TextUtils.isEmpty(email)) {
                     Toast.makeText(SignUpActivity.this, "Veuillez entrer une adresse e-mail", Toast.LENGTH_SHORT).show();
@@ -80,15 +82,15 @@ public class SignUpActivity extends Activity {
                 }
 
                 if (TextUtils.isEmpty(lastName)) {
-                    Toast.makeText(SignUpActivity.this, "Veuillez entrer un last name", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SignUpActivity.this, "Veuillez entrer un nom de famille", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 if (TextUtils.isEmpty(firstName)) {
-                    Toast.makeText(SignUpActivity.this, "Veuillez entrer un first name", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SignUpActivity.this, "Veuillez entrer un prénom", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 if (TextUtils.isEmpty(phoneNumberStr)) {
-                    Toast.makeText(SignUpActivity.this, "Veuillez entrer un numero de telephone ", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SignUpActivity.this, "Veuillez entrer un numéro de téléphone ", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
@@ -136,11 +138,9 @@ public class SignUpActivity extends Activity {
                             String userId = user.getUid();
                             // Save user information to the Realtime Database
                             userRef.child(userId).setValue(newUser);
-                            Log.d("USER ID WHEN SIGN UP", "User ID: " + userId);
                             Intent i = new Intent(SignUpActivity.this, LoginActivity.class);
                             startActivity(i);
                         } else {
-                            Log.w(TAG, "createUserWithEmail:failure", task.getException());
                             Toast.makeText(SignUpActivity.this, "Échec de l'enregistrement" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     }

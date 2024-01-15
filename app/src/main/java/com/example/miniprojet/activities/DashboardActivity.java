@@ -32,7 +32,7 @@ import java.util.List;
 public class DashboardActivity extends AppCompatActivity {
     private static final String TAG = "Dashboard";
     private Button creer_demande;
-    private ImageButton support, faq, logoutBtn;
+    private ImageButton support, faq, profile, logoutBtn;
     private TextView firstNameTextView, lastNameTextView;
     private FirebaseAuth firebaseAuth;
     private DatabaseReference usersRef, demandesRef;
@@ -215,6 +215,15 @@ public class DashboardActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent myintent = new Intent(DashboardActivity.this, FaqActivity.class);
+                startActivity(myintent);
+            }
+        });
+
+        profile = findViewById(R.id.profile);
+        profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent myintent = new Intent(DashboardActivity.this, ProfileActivity.class);
                 startActivity(myintent);
             }
         });

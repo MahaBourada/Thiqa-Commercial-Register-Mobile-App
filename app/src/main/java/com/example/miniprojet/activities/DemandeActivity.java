@@ -14,6 +14,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -22,8 +23,11 @@ import com.example.miniprojet.model.Demandes;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.Arrays;
 import java.util.List;
@@ -135,81 +139,95 @@ public class DemandeActivity extends AppCompatActivity {
                 FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
                 String userId = firebaseUser.getUid();
 
-
-                // Example for saving demandes data
                 DatabaseReference demandesRef = FirebaseDatabase.getInstance().getReference("demandes");
                 String demandeId = demandesRef.push().getKey();
 
+                String trimmedCompanyName = widgetToString(nomEntreprise).trim();
 
-                if(selectedTypeIdentite == null) {
-                    Toast.makeText(getBaseContext(), "Veuillez selectionner un type de pièce d'identité", Toast.LENGTH_SHORT).show();
-                } else if(widgetToString(numIdentite).trim().equals("")) {
-                    Toast.makeText(getBaseContext(), "Veuillez insérer un N° de pièce d'identité", Toast.LENGTH_SHORT).show();
-                } else if(widgetToString(nomEntreprise).trim().equals("")) {
-                    Toast.makeText(getBaseContext(), "Veuillez insérer un nom d'entreprise", Toast.LENGTH_SHORT).show();
-                } else if(widgetToString(adresse).trim().equals("")) {
-                    Toast.makeText(getBaseContext(), "Veuillez insérer une adresse commerciale", Toast.LENGTH_SHORT).show();
-                } else if(selectedActivite == null) {
-                    Toast.makeText(getBaseContext(), "Veuillez selectionner un type d'activité", Toast.LENGTH_SHORT).show();
-                } else if (widgetToString(numFiscale).trim().equals("")) {
-                    Toast.makeText(getBaseContext(), "Veuillez insérer un N° d'identification fiscale", Toast.LENGTH_SHORT).show();
-                } else if (widgetToString(rib).trim().equals("")) {
-                    Toast.makeText(getBaseContext(), "Veuillez insérer un RIB", Toast.LENGTH_SHORT).show();
-                } else if (idntFileUri == null) {
-                    Toast.makeText(getBaseContext(), "Veuillez insérer le justificatif de pièce d'identité", Toast.LENGTH_SHORT).show();
-                } else if (contratFileUri == null) {
-                    Toast.makeText(getBaseContext(), "Veuillez insérer le justificatif de contrat de bail/propriété", Toast.LENGTH_SHORT).show();
-                } else if (fiscaleFileUri == null) {
-                    Toast.makeText(getBaseContext(), "Veuillez insérer le justificatif de carte fiscale", Toast.LENGTH_SHORT).show();
-                } else if (ribFileUri == null) {
-                    Toast.makeText(getBaseContext(), "Veuillez insérer le justificatif de RIB", Toast.LENGTH_SHORT).show();
-                } else if (widgetToString(numIdentite).length() < 9) {
-                    handleValidationError("Veuillez insérer les 9 chiffres de la pièce d'identité", numIdentite);
-                } else if (widgetToString(numFiscale).length() < 14) {
-                    handleValidationError("Veuillez insérer les 14 chiffres du N° d'identification fiscale", numFiscale);
-                } else if (widgetToString(rib).length() < 24) {
-                    handleValidationError("Veuillez insérer les 24 chiffres du RIB", rib);
-                } else if (!declaration.isChecked()) {
-                    Toast.makeText(getBaseContext(), "Veuillez accepter la déclaration pour soumettre la demande", Toast.LENGTH_SHORT).show();
-                } else {
-                    Demandes demandes = new Demandes(
-                            userId,
-                            selectedTypeIdentite,
-                            widgetToString(numIdentite),
-                            widgetToString(nomEntreprise),
-                            widgetToString(adresse),
-                            selectedActivite,
-                            widgetToString(numFiscale),
-                            widgetToString(rib),
-                            idntFileUri.toString(),
-                            contratFileUri.toString(),
-                            fiscaleFileUri.toString(),
-                            ribFileUri.toString(),
-                            "En cours de traitement");  // Linking to user through userID
-                    demandesRef.child(demandeId).setValue(demandes);
+                demandesRef.orderByChild("nomEntreprise").equalTo(trimmedCompanyName).addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        if (dataSnapshot.exists()) {
+                            // Company with the same name already exists
+                            Toast.makeText(DemandeActivity.this, "Ce nom d'entreprise est deja pris, veuillez en choisir un autre", Toast.LENGTH_SHORT).show();
+                        } else {
+                            if (selectedTypeIdentite == null) {
+                                Toast.makeText(getBaseContext(), "Veuillez selectionner un type de pièce d'identité", Toast.LENGTH_SHORT).show();
+                            } else if (widgetToString(numIdentite).trim().equals("")) {
+                                Toast.makeText(getBaseContext(), "Veuillez insérer un N° de pièce d'identité", Toast.LENGTH_SHORT).show();
+                            } else if (widgetToString(nomEntreprise).trim().equals("")) {
+                                Toast.makeText(getBaseContext(), "Veuillez insérer un nom d'entreprise", Toast.LENGTH_SHORT).show();
+                            } else if (widgetToString(adresse).trim().equals("")) {
+                                Toast.makeText(getBaseContext(), "Veuillez insérer une adresse commerciale", Toast.LENGTH_SHORT).show();
+                            } else if (selectedActivite == null) {
+                                Toast.makeText(getBaseContext(), "Veuillez selectionner un type d'activité", Toast.LENGTH_SHORT).show();
+                            } else if (widgetToString(numFiscale).trim().equals("")) {
+                                Toast.makeText(getBaseContext(), "Veuillez insérer un N° d'identification fiscale", Toast.LENGTH_SHORT).show();
+                            } else if (widgetToString(rib).trim().equals("")) {
+                                Toast.makeText(getBaseContext(), "Veuillez insérer un RIB", Toast.LENGTH_SHORT).show();
+                            } else if (idntFileUri == null) {
+                                Toast.makeText(getBaseContext(), "Veuillez insérer le justificatif de pièce d'identité", Toast.LENGTH_SHORT).show();
+                            } else if (contratFileUri == null) {
+                                Toast.makeText(getBaseContext(), "Veuillez insérer le justificatif de contrat de bail/propriété", Toast.LENGTH_SHORT).show();
+                            } else if (fiscaleFileUri == null) {
+                                Toast.makeText(getBaseContext(), "Veuillez insérer le justificatif de carte fiscale", Toast.LENGTH_SHORT).show();
+                            } else if (ribFileUri == null) {
+                                Toast.makeText(getBaseContext(), "Veuillez insérer le justificatif de RIB", Toast.LENGTH_SHORT).show();
+                            } else if (widgetToString(numIdentite).length() < 9) {
+                                handleValidationError("Veuillez insérer les 9 chiffres de la pièce d'identité", numIdentite);
+                            } else if (widgetToString(numFiscale).length() < 14) {
+                                handleValidationError("Veuillez insérer les 14 chiffres du N° d'identification fiscale", numFiscale);
+                            } else if (widgetToString(rib).length() < 24) {
+                                handleValidationError("Veuillez insérer les 24 chiffres du RIB", rib);
+                            } else if (!declaration.isChecked()) {
+                                Toast.makeText(getBaseContext(), "Veuillez accepter la déclaration pour soumettre la demande", Toast.LENGTH_SHORT).show();
+                            } else {
+                                Demandes demandes = new Demandes(
+                                        userId,
+                                        selectedTypeIdentite,
+                                        widgetToString(numIdentite),
+                                        widgetToString(nomEntreprise),
+                                        widgetToString(adresse),
+                                        selectedActivite,
+                                        widgetToString(numFiscale),
+                                        widgetToString(rib),
+                                        idntFileUri.toString(),
+                                        contratFileUri.toString(),
+                                        fiscaleFileUri.toString(),
+                                        ribFileUri.toString(),
+                                        "En cours de traitement");  // Linking to user through userID
+                                demandesRef.child(demandeId).setValue(demandes);
 
-                    Toast.makeText(DemandeActivity.this, "Demande submitted successfully", Toast.LENGTH_SHORT).show();
-                    Log.d("Debug", "Demande submitted successfully " + demandeId + " USER ID " + userId);
+                                Toast.makeText(DemandeActivity.this, "Demande submitted successfully", Toast.LENGTH_SHORT).show();
+                                Log.d("Debug", "Demande submitted successfully " + demandeId + " USER ID " + userId);
 
-                    Handler handler = new Handler();
-                    handler.postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            // Update the etat randomly
-                            String newEtat = getRandomEtat();
+                                Handler handler = new Handler();
+                                handler.postDelayed(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        // Update the etat randomly
+                                        String newEtat = getRandomEtat();
 
-                            // Update the etat in the Firebase database
-                            demandesRef.child(demandeId).child("etat").setValue(newEtat);
+                                        // Update the etat in the Firebase database
+                                        demandesRef.child(demandeId).child("etat").setValue(newEtat);
 
-                            Log.d("Debug", "Etat updated to: " + newEtat);
+                                        Log.d("Debug", "Etat updated to: " + newEtat);
+                                    }
+                                }, 10000); // 10 seconds delay
+
+                                Intent myintent = new Intent(DemandeActivity.this, DashboardActivity.class);
+                                startActivity(myintent);
+                            }
                         }
-                    }, 10000); // 10 seconds delay
+                    }
 
-                    Intent myintent = new Intent(DemandeActivity.this, DashboardActivity.class);
-                    startActivity(myintent);
-                }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                        Log.e("Error", "Error checking for duplicate company name: " + databaseError.getMessage());
+                    }
+                });
             }
-        });
+            });
 
         back = findViewById(R.id.back);
         back.setOnClickListener(new View.OnClickListener() {
