@@ -37,7 +37,6 @@ public class DetailsActivity extends AppCompatActivity {
         Demandes demande = (Demandes) intent.getSerializableExtra("demandes");
         if (intent != null && intent.hasExtra("demandes")) {
 
-            // Access demand properties and set them in your UI elements
             demande_title = findViewById(R.id.companyName);
             company_name = findViewById(R.id.nom_entreprise);
             idntType = findViewById(R.id.type_identite);
@@ -106,7 +105,7 @@ public class DetailsActivity extends AppCompatActivity {
         Uri uri = Uri.parse(uriString);
 
         Intent intent = new Intent(Intent.ACTION_VIEW);
-        intent.setDataAndType(uri, "application/pdf"); // You can set the MIME type based on the file type
+        intent.setDataAndType(uri, "application/pdf");
 
         try {
             startActivity(intent);

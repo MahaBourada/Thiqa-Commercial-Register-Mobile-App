@@ -47,7 +47,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="  Bienvenue sur [Nom de votre application] ! Merci de lire attentivement ces conditions d'utilisation avant d'utiliser notre application mobile."
+                android:text="  Bienvenue sur Thiqa ! Merci de lire attentivement ces conditions d'utilisation avant d'utiliser notre application mobile."
                 android:textSize="15sp"
                 android:layout_marginTop="20dp"
                 android:layout_marginHorizontal="25dp"
@@ -70,7 +70,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="  En utilisant l'application mobile [Nom de votre application], vous acceptez de vous conformer à ces conditions d'utilisation. Si vous n'êtes pas d'accord avec une ou plusieurs clauses de ces conditions, veuillez ne pas utiliser notre application."
+                android:text="  En utilisant l'application mobile Thiqa, vous acceptez de vous conformer à ces conditions d'utilisation. Si vous n'êtes pas d'accord avec une ou plusieurs clauses de ces conditions, veuillez ne pas utiliser notre application."
                 android:textSize="15sp"
                 android:layout_marginHorizontal="25dp"
                 android:textColor="@color/black"
@@ -102,7 +102,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="  b. Vous ne devez pas utiliser l'application d'une manière qui pourrait causer des dommages à notre entreprise, à d'autres utilisateurs, ou en violation des lois et réglementations en vigueur."
+                android:text="  b. Vous ne devez pas utiliser l'application d'une manière qui pourrait causer des dommages à d'autres utilisateurs, ou en violation des lois et réglementations en vigueur."
                 android:textSize="15sp"
                 android:layout_marginHorizontal="25dp"
                 android:textColor="@color/black"

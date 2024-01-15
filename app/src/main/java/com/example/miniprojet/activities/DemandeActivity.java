@@ -27,7 +27,6 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.app.NotificationCompat;
-import androidx.core.app.NotificationManagerCompat;
 import androidx.core.content.ContextCompat;
 
 import com.example.miniprojet.R;
@@ -131,10 +130,8 @@ public class DemandeActivity extends AppCompatActivity {
         TextInputLayout textInputType = findViewById(R.id.textInputType);
         AutoCompleteTextView type_identite = findViewById(R.id.type_identite);
 
-        // Sample data for the dropdown
         List<String> itemsType = Arrays.asList("Passeport", "Carte d'identité");
 
-        // Set up the adapter for AutoCompleteTextView
         ArrayAdapter<String> adapterType = new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line, itemsType);
         type_identite.setAdapter(adapterType);
 
@@ -146,12 +143,10 @@ public class DemandeActivity extends AppCompatActivity {
         TextInputLayout textInputActivite = findViewById(R.id.textInputActivite);
         AutoCompleteTextView activite = findViewById(R.id.activite);
 
-        // Sample data for the dropdown
         List<String> itemsActivite = Arrays.asList("Commerce de détail", "Commerce de gros", "Restauration et Hôtellerie", "Services", "Industrie",
                 "BTP (Bâtiment et Travaux Publics)", "Transport et Logistique", "TIC (Technologies de l'Information et de la Communication)",
                 "Agroalimentaire", "Import-Export");
 
-        // Set up the adapter for AutoCompleteTextView
         ArrayAdapter<String> adapterActivite = new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line, itemsActivite);
         activite.setAdapter(adapterActivite);
 
@@ -225,7 +220,7 @@ public class DemandeActivity extends AppCompatActivity {
                                         contratFileUri.toString(),
                                         fiscaleFileUri.toString(),
                                         ribFileUri.toString(),
-                                        "En cours de traitement");  // Linking to user through userID
+                                        "En cours de traitement");
                                 demandesRef.child(demandeId).setValue(demandes);
 
                                 Toast.makeText(DemandeActivity.this, "Demande submitted successfully", Toast.LENGTH_SHORT).show();
@@ -234,15 +229,12 @@ public class DemandeActivity extends AppCompatActivity {
                                 handler.postDelayed(new Runnable() {
                                     @Override
                                     public void run() {
-                                        // Update the etat randomly
                                         String newEtat = getRandomEtat();
 
-                                        // Update the etat in the Firebase database
                                         demandesRef.child(demandeId).child("etat").setValue(newEtat);
 
+                                        //Notification
                                         sendNotification(newEtat, widgetToString(nomEntreprise));
-
-                                        Log.d("Debug", "Notification sent with etat: " + newEtat + widgetToString(nomEntreprise));
                                     }
                                 }, 10000); // 10 seconds delay
 
@@ -305,7 +297,6 @@ public class DemandeActivity extends AppCompatActivity {
     }
 
     private String getRandomEtat() {
-        // Randomly choose between "accepted" and "rejected"
         Random random = new Random();
         boolean isAccepted = random.nextBoolean();
 
@@ -317,8 +308,6 @@ public class DemandeActivity extends AppCompatActivity {
     }
 
     private void sendNotification(String newEtat, String companyName) {
-        Log.d("Debug", "TESTING NOTIFICATIONS");
-
         String channelID = "CHANNEL_ID_NOTIFICATION";
         String title = "Résultat de traitement de demande";
         String etatNotification = newEtat.trim().equals("Demande acceptée") ? "acceptée" : "refusée";
@@ -352,9 +341,6 @@ public class DemandeActivity extends AppCompatActivity {
                 notificationManager.createNotificationChannel(notificationChannel);
             }
         }
-
-
-        Log.d("Debug", "TESTING NOTIFICATIONS" + notificationManager);
 
         notificationManager.notify(0, builder.build());
     }

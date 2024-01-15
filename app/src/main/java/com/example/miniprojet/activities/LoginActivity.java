@@ -88,7 +88,6 @@ public class LoginActivity extends AppCompatActivity {
                             FirebaseUser user = firebaseAuth.getCurrentUser();
                             if (user != null) {
                                 String uid = user.getUid();
-                                Log.w("IdLogin", uid, task.getException());
                             }
 
                             Intent i = new Intent(LoginActivity.this, DashboardActivity.class);

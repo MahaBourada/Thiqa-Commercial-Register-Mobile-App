@@ -17,15 +17,26 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         tools:context=".activities.DashboardActivity"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:background="@drawable/white_backgroung"
+        android:layout_marginHorizontal="25dp"
+        android:layout_marginVertical="40dp"
+        android:gravity="center">
+
+        <ImageView
+            android:layout_width="140dp"
+            android:layout_height="146.834dp"
+            android:src="@drawable/trustlogo_final"
+            android:layout_gravity="center"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Mot de passe oublié"
-            android:textSize="35sp"
-            android:layout_marginTop="100dp"
-            android:layout_marginBottom="40dp"
+            android:textSize="25sp"
+            android:gravity="center"
+            android:layout_marginTop="40dp"
+            android:layout_marginBottom="10dp"
             android:layout_marginHorizontal="35dp"
             android:textColor="@color/black"
             android:fontFamily="@font/aleo"
@@ -36,7 +47,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="23dp"
-            android:layout_marginHorizontal="26dp"
+            android:layout_marginHorizontal="20dp"
             android:hint="Adresse e-mail"
             style="@style/MyTextInputLayout" >
 
@@ -48,7 +59,9 @@
                 android:paddingVertical="15dp"
                 android:fontFamily="@font/aleo"
                 android:textColorHint="#666"
-                android:textStyle="bold"/>
+                android:textStyle="bold"
+                android:inputType="text"
+                android:maxLines="1"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -59,9 +72,9 @@
             android:text="Réinitialiser le mot de passe"
             android:textSize="15sp"
             android:layout_marginHorizontal="50dp"
-            android:layout_marginTop="42dp"
+            android:layout_marginTop="22dp"
             android:paddingVertical="10dp"
-            android:paddingHorizontal="30dp"
+            android:paddingHorizontal="20dp"
             android:layout_gravity="center"
             android:background="@drawable/submit_button"
             android:textColor="#fff"
@@ -81,7 +94,6 @@
             android:textColor="@color/black"
             android:fontFamily="@font/aleo"
             android:layout_gravity="center"
-            android:textStyle="bold"
             />
 
     </LinearLayout>

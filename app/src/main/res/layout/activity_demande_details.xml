@@ -99,7 +99,6 @@
             android:fontFamily="@font/aleo"
             android:background="@drawable/input_background"
             android:padding="15dp"
-            android:textStyle="bold"
             />
 
         <TextView
@@ -125,7 +124,6 @@
             android:fontFamily="@font/aleo"
             android:background="@drawable/input_background"
             android:padding="15dp"
-            android:textStyle="bold"
             />
 
         <TextView
@@ -163,7 +161,6 @@
             android:fontFamily="@font/aleo"
             android:background="@drawable/input_background"
             android:padding="15dp"
-            android:textStyle="bold"
             />
 
         <TextView
@@ -189,7 +186,6 @@
             android:fontFamily="@font/aleo"
             android:background="@drawable/input_background"
             android:padding="15dp"
-            android:textStyle="bold"
             />
 
         <TextView
@@ -215,7 +211,6 @@
             android:fontFamily="@font/aleo"
             android:background="@drawable/input_background"
             android:padding="15dp"
-            android:textStyle="bold"
             />
 
         <TextView
@@ -241,7 +236,6 @@
             android:fontFamily="@font/aleo"
             android:background="@drawable/input_background"
             android:padding="15dp"
-            android:textStyle="bold"
             />
 
         <TextView
@@ -267,7 +261,6 @@
             android:fontFamily="@font/aleo"
             android:background="@drawable/input_background"
             android:padding="15dp"
-            android:textStyle="bold"
             />
 
         <TextView
@@ -310,7 +303,6 @@
             android:paddingHorizontal="18dp"
             android:paddingVertical="15dp"
             android:textAllCaps="false"
-            android:textStyle="bold"
             />
 
         <TextView
@@ -341,7 +333,6 @@
             android:paddingHorizontal="18dp"
             android:paddingVertical="15dp"
             android:textAllCaps="false"
-            android:textStyle="bold"
             />
 
         <TextView
@@ -372,7 +363,6 @@
             android:paddingHorizontal="18dp"
             android:paddingVertical="15dp"
             android:textAllCaps="false"
-            android:textStyle="bold"
             />
 
         <TextView
@@ -403,7 +393,6 @@
             android:paddingHorizontal="18dp"
             android:paddingVertical="15dp"
             android:textAllCaps="false"
-            android:textStyle="bold"
             />
 
     </LinearLayout>

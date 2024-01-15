@@ -5,34 +5,6 @@ import com.google.firebase.database.PropertyName;
 import java.io.Serializable;
 
 public class Demandes implements Serializable {
-    /* public Demandes(int id, String typeIdentite, String numIdentite, String nomEntreprise, String adresse, String activity,
-                    String numFiscale, String ribBanque, String etat) {
-        this.id = id;
-        this.typeIdentite = typeIdentite;
-        this.numIdentite = numIdentite;
-        this.nomEntreprise = nomEntreprise;
-        this.adresse = adresse;
-        this.activity = activity;
-        this.numFiscale = numFiscale;
-        this.ribBanque = ribBanque;
-        this.etat = etat;
-    }
-
-    public Demandes(String typeIdentite, String numIdentite, String nomEntreprise, String adresse, String activity, String numFiscale,
-                    String ribBanque, String etat, String identitePath, String contratEndroitPath, String fiscalePath, String ribPath) {
-        this.typeIdentite = typeIdentite;
-        this.numIdentite = numIdentite;
-        this.nomEntreprise = nomEntreprise;
-        this.adresse = adresse;
-        this.activity = activity;
-        this.numFiscale = numFiscale;
-        this.ribBanque = ribBanque;
-        this.etat = etat;
-        this.identitePath = identitePath;
-        this.contratEndroitPath = contratEndroitPath;
-        this.fiscalePath = fiscalePath;
-        this.ribPath = ribPath;
-    } */
 
     public Demandes() {}
 
@@ -52,38 +24,6 @@ public class Demandes implements Serializable {
         this.ribPath = ribPath;
         this.etat = etat;
     }
-
-    /* public Demandes(String typeIdentite, String numIdentite, String nomEntreprise, String adresse, String activity, String numFiscale,
-                    String ribBanque, String identitePath, String contratEndroitPath, String fiscalePath, String ribPath) {
-        this.typeIdentite = typeIdentite;
-        this.numIdentite = numIdentite;
-        this.nomEntreprise = nomEntreprise;
-        this.adresse = adresse;
-        this.activity = activity;
-        this.numFiscale = numFiscale;
-        this.ribBanque = ribBanque;
-        this.identitePath = identitePath;
-        this.contratEndroitPath = contratEndroitPath;
-        this.fiscalePath = fiscalePath;
-        this.ribPath = ribPath;
-    } */
-
-    /* public Demandes(int id, String typeIdentite, String numIdentite, String nomEntreprise, String adresse, String activity, String numFiscale, String ribBanque,
-                    String etat, String identitePath, String contratEndroitPath, String fiscalePath, String ribPath) {
-        this.id = id;
-        this.typeIdentite = typeIdentite;
-        this.numIdentite = numIdentite;
-        this.nomEntreprise = nomEntreprise;
-        this.adresse = adresse;
-        this.activity = activity;
-        this.numFiscale = numFiscale;
-        this.ribBanque = ribBanque;
-        this.etat = etat;
-        this.identitePath = identitePath;
-        this.contratEndroitPath = contratEndroitPath;
-        this.fiscalePath = fiscalePath;
-        this.ribPath = ribPath;
-    } */
 
     @PropertyName("id") // Specify the name of the ID field in your database
     private String id;

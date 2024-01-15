@@ -140,7 +140,6 @@
             android:fontFamily="@font/aleo"
             android:textColorHint="#666"
             android:textStyle="bold"
-            android:textSize="18sp"
             android:inputType="textCapSentences" />
 
     </com.google.android.material.textfield.TextInputLayout>

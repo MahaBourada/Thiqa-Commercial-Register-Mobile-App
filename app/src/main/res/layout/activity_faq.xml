@@ -21,7 +21,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".activities.DashboardActivity"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_marginBottom="40dp">
+
         <ImageButton
             android:id="@+id/back"
             android:layout_width="wrap_content"
@@ -84,14 +86,9 @@
             android:id="@+id/expandableTextView6"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" />
-
-        <com.example.miniprojet.customAdapters.ExpandableTextView
-            android:id="@+id/expandableTextView7"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_marginBottom="50dp" />
+            android:layout_marginBottom="40dp"/>
+
     </LinearLayout>
 </ScrollView>
 </FrameLayout>

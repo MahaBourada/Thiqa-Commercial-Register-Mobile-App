@@ -111,7 +111,7 @@
             android:layout_height="wrap_content"
             android:text="Mot de passe oublié ?"
             android:textSize="15sp"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="10dp"
             android:layout_marginHorizontal="40dp"
             android:textColor="@color/black"
             android:fontFamily="@font/aleo"

@@ -1,12 +1,9 @@
 package com.example.miniprojet.activities;
 
-import static android.content.ContentValues.TAG;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -138,7 +135,6 @@ public class SignUpActivity extends Activity {
                 // Create a User object with the retrieved information
                 User newUser = new User(firstName, lastName, email, password, phoneNumberStr);
 
-
                 firebaseAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
@@ -152,7 +148,7 @@ public class SignUpActivity extends Activity {
                             Intent i = new Intent(SignUpActivity.this, LoginActivity.class);
                             startActivity(i);
                         } else {
-                            Toast.makeText(SignUpActivity.this, "Échec de l'enregistrement" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(SignUpActivity.this, "Vous êtes déja enregistré avec cet e-mail", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
@@ -168,8 +164,7 @@ public class SignUpActivity extends Activity {
 
     private boolean isValidAlgerianPhoneNumber(String phoneNumber) {
         // Use a regex pattern for Algerian phone number validation
-        //String phoneRegex = "^(00213|\\+213|0)(5|6|7)[0-9]{8}$";
-        String phoneRegex = "^(00213|0)(5|6|7)[0-9]{8}$";
+        String phoneRegex = "^(00213|\\+213|0)(5|6|7)[0-9]{8}$";
         return phoneNumber.matches(phoneRegex);
     }
 }

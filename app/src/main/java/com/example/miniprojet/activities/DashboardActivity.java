@@ -57,13 +57,11 @@ public class DashboardActivity extends AppCompatActivity {
 
         // Check if the user is authenticated
         if (firebaseUser != null) {
-            String userId = firebaseUser.getUid(); // No change here
+            String userId = firebaseUser.getUid();
 
             loading_screen.setVisibility(View.VISIBLE);
 
-            // DatabaseReference pointing to the specific user's node in the Realtime Database
             usersRef = FirebaseDatabase.getInstance().getReference().child("users").child(userId);
-            // Use addValueEventListener to continuously listen for changes to user data
             usersRef.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -78,7 +76,7 @@ public class DashboardActivity extends AppCompatActivity {
                             firstNameTextView.setText(firstName);
                             lastNameTextView.setText(lastName);
                         } else {
-                            Log.d(TAG, "No such document");
+                            Log.d(TAG, "No user found");
                         }
                     }
 
@@ -88,7 +86,7 @@ public class DashboardActivity extends AppCompatActivity {
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
                     loading_screen.setVisibility(View.GONE);
-                    Log.w(TAG, "Failed to read value.", error.toException());
+                    Log.w(TAG, "Failed to read value. ", error.toException());
                 }
             });
         }
@@ -100,10 +98,9 @@ public class DashboardActivity extends AppCompatActivity {
                     // Sign out the user
                     firebaseAuth.signOut();
 
-                    // Navigate back to MainActivity
                     Intent intent = new Intent(DashboardActivity.this, LoginActivity.class);
                     startActivity(intent);
-                    finish(); // Close the current activity
+                    finish();
                 }
             });
 
@@ -125,7 +122,7 @@ public class DashboardActivity extends AppCompatActivity {
                     demandesList.clear();
                     for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                         Demandes demande = snapshot.getValue(Demandes.class);
-                        demandesList.add(demande); // Add 'demande' to the list
+                        demandesList.add(demande);
                     }
                     adapter.notifyDataSetChanged();
                     if (demandesList.isEmpty()) {
@@ -148,17 +145,12 @@ public class DashboardActivity extends AppCompatActivity {
         demandesListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                // Retrieve the selected Demandes object
                 Demandes selectedDemande = demandesList.get(position);
 
-                // Create an Intent to start the DetailsActivity
                 Intent intent = new Intent(DashboardActivity.this, DetailsActivity.class);
 
-                // Pass the Firebase-generated demande ID to retrieve details in DetailsActivity
-                intent.putExtra("demandeId", selectedDemande.getId()); // Assuming getId() returns the Firebase-generated ID
-                Log.d("Debug", "DEMANDE ID: " + selectedDemande.getId());
+                intent.putExtra("demandeId", selectedDemande.getId());
 
-                // Start the DetailsActivity
                 startActivity(intent);
             }
         });
@@ -168,25 +160,19 @@ public class DashboardActivity extends AppCompatActivity {
                 demandesListView.setVisibility(View.GONE);
                 emptyListTextView.setVisibility(View.VISIBLE);
             } else {
-                //CustomDemandeAdapter adapter = new CustomDemandeAdapter(this, demandesList);
-                //listView.setAdapter(adapter);
                 demandesListView.setVisibility(View.VISIBLE);
                 emptyListTextView.setVisibility(View.GONE);
 
-                // Set OnItemClickListener for the ListView
                 demandesListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         // Retrieve the clicked Demandes object
                         Demandes selectedDemande = demandesList.get(position);
 
-                        // Create an Intent to start the DetailsActivity
                         Intent intent = new Intent(DashboardActivity.this, DetailsActivity.class);
 
-                        // Pass the demand ID or any necessary information to retrieve details in DetailsActivity
-                        intent.putExtra("demandeId", selectedDemande.getId()); // Assuming getId() returns the ID
+                        intent.putExtra("demandeId", selectedDemande.getId());
 
-                        // Start the DetailsActivity
                         startActivity(intent);
                     }
                 });

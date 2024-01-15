@@ -48,33 +48,29 @@ public class ProfileActivity extends Activity {
         phone = findViewById(R.id.tel);
 
         if (firebaseUser != null) {
-            String userId = firebaseUser.getUid(); // No change here
+            String userId = firebaseUser.getUid();
 
-            // DatabaseReference pointing to the specific user's node in the Realtime Database
             usersRef = FirebaseDatabase.getInstance().getReference().child("users").child(userId);
-            // Use addValueEventListener to continuously listen for changes to user data
             usersRef.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     if (snapshot.exists()) {
-                        // Directly retrieve the User object using the User class
                         User user = snapshot.getValue(User.class);
 
                         if (user != null) {
-
                             email.setText(user.getEmail());
                             firstName.setText(user.getFirstName());
                             lastName.setText(user.getLastName());
                             phone.setText(user.getPhoneNumber());
                         } else {
-                            Log.d("Debug", "No such document");
+                            Log.d("Error", "No user found");
                         }
                     }
 
                 }
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
-                    Log.w("Debug", "Failed to read value.", error.toException());
+                    Log.w("Error", "Failed to read value.", error.toException());
                 }
             });
         }
