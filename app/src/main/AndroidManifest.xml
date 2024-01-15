@@ -48,6 +48,12 @@
         <activity
             android:name=".activities.ProfileActivity"
             android:exported="true" />
+        <activity
+            android:name=".activities.DeclarationActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activities.ConditionsActivity"
+            android:exported="true" />
     </application>
 
 </manifest>

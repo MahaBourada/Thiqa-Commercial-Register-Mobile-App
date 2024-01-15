@@ -39,7 +39,7 @@
                 android:textColor="@color/black"
                 android:fontFamily="@font/aleo"
                 android:textStyle="bold"
-                android:drawableEnd="@drawable/profile"
+                android:drawableEnd="@drawable/profile_black"
                 />
 
             <TextView

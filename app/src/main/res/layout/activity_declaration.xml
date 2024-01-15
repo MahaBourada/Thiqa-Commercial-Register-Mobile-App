@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:adjustViewBounds="true"
+        android:maxHeight="0dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/backgrounddrawing" />
+    <ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".activities.DashboardActivity"
+            android:orientation="vertical">
+            <ImageButton
+                android:id="@+id/back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:layout_marginTop="30dp"
+                android:layout_marginStart="22dp"
+                android:src="@drawable/back"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Conditions pour la Création d'un Registre de Commerce en Algérie"
+                android:textSize="26sp"
+                android:layout_marginTop="20dp"
+                android:layout_marginHorizontal="25dp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/aleo"
+                android:textStyle="bold"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="  Bienvenue dans le processus de création de votre registre de commerce en Algérie. Avant de procéder, veuillez prendre connaissance des conditions suivantes :"
+                android:textSize="15sp"
+                android:layout_marginTop="20dp"
+                android:layout_marginHorizontal="25dp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/aleo"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1. Eligibilité"
+                android:textSize="15sp"
+                android:layout_marginTop="10dp"
+                android:layout_marginHorizontal="25dp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/aleo"
+                android:textStyle="bold"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="  a. Seules les entités juridiques, y compris les personnes morales, peuvent s'inscrire au registre de commerce en Algérie."
+                android:textSize="15sp"
+                android:layout_marginHorizontal="25dp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/aleo"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="  b. Les demandeurs doivent être en conformité avec les lois et règlements en vigueur en Algérie."
+                android:textSize="15sp"
+                android:layout_marginHorizontal="25dp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/aleo"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2. Documents Requis"
+                android:textSize="15sp"
+                android:layout_marginTop="10dp"
+                android:layout_marginHorizontal="25dp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/aleo"
+                android:textStyle="bold"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="  a. Les demandeurs doivent soumettre une demande d'inscription au registre de commerce accompagnée des documents requis, y compris mais sans s'y limiter, les statuts de l'entreprise, les pièces d'identité des actionnaires, et tout document justifiant la propriété du lieu d'exercice."
+                android:textSize="15sp"
+                android:layout_marginHorizontal="25dp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/aleo"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="  b. Tous les documents soumis doivent être en conformité avec les exigences légales en vigueur."
+                android:textSize="15sp"
+                android:layout_marginHorizontal="25dp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/aleo"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="3. Adresse du Siège Social"
+                android:textSize="15sp"
+                android:layout_marginTop="10dp"
+                android:layout_marginHorizontal="25dp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/aleo"
+                android:textStyle="bold"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="  a. L'entreprise doit avoir une adresse du siège social en Algérie. Cette adresse doit être physique et ne peut pas être une boîte postale."
+                android:textSize="15sp"
+                android:layout_marginHorizontal="25dp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/aleo"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="  b. Toute modification de l'adresse du siège social doit être notifiée aux autorités compétentes dans les délais prescrits."
+                android:textSize="15sp"
+                android:layout_marginHorizontal="25dp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/aleo"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="4. Activités Licites"
+                android:textSize="15sp"
+                android:layout_marginTop="10dp"
+                android:layout_marginHorizontal="25dp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/aleo"
+                android:textStyle="bold"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="  a. Les activités commerciales exercées doivent être licites et conformes aux lois algériennes."
+                android:textSize="15sp"
+                android:layout_marginHorizontal="25dp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/aleo"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="  b. L'entreprise doit déclarer clairement les activités qu'elle entend exercer au moment de l'inscription."
+                android:textSize="15sp"
+                android:layout_marginHorizontal="25dp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/aleo"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="5. Paiement des Frais"
+                android:textSize="15sp"
+                android:layout_marginTop="10dp"
+                android:layout_marginHorizontal="25dp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/aleo"
+                android:textStyle="bold"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="  a. Les frais d'inscription et autres frais associés doivent être payés conformément aux tarifs en vigueur."
+                android:textSize="15sp"
+                android:layout_marginHorizontal="25dp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/aleo"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="  b. Tout retard dans le paiement des frais peut entraîner des sanctions ou la suspension de l'inscription."
+                android:textSize="15sp"
+                android:layout_marginHorizontal="25dp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/aleo"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="6. Mise à Jour Régulière des Informations"
+                android:textSize="15sp"
+                android:layout_marginTop="10dp"
+                android:layout_marginHorizontal="25dp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/aleo"
+                android:textStyle="bold"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="  a. Les entreprises sont tenues de maintenir à jour toutes les informations enregistrées au registre de commerce."
+                android:textSize="15sp"
+                android:layout_marginHorizontal="25dp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/aleo"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="  b. Tout changement dans la structure de l'entreprise, les activités commerciales, les dirigeants, ou toute autre information pertinente doit être notifié aux autorités dans les délais prescrits."
+                android:textSize="15sp"
+                android:layout_marginHorizontal="25dp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/aleo"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="7. Respect des Obligations Fiscales et Légales"
+                android:textSize="15sp"
+                android:layout_marginTop="10dp"
+                android:layout_marginHorizontal="25dp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/aleo"
+                android:textStyle="bold"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="  a. L'entreprise doit respecter toutes les obligations fiscales et légales applicables en Algérie."
+                android:textSize="15sp"
+                android:layout_marginHorizontal="25dp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/aleo"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="  b. Tout manquement à ces obligations peut entraîner des sanctions, y compris la fermeture du registre de commerce."
+                android:textSize="15sp"
+                android:layout_marginHorizontal="25dp"
+                android:layout_marginBottom="40dp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/aleo"
+                />
+        </LinearLayout>
+    </ScrollView>
+</FrameLayout>

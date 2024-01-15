@@ -179,18 +179,31 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <CheckBox
-            android:id="@+id/terms_checkbox"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="J'accepte les conditions d'utilisation."
-            android:layout_marginTop="10dp"
-            android:layout_marginStart="20dp"
-            android:textSize="16sp"
-            android:textColor="@color/black"
-            android:paddingHorizontal="8dp"
-            android:fontFamily="@font/aleo"
-            />
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginTop="10dp">
+            <CheckBox
+                android:id="@+id/terms_checkbox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="J'accepte les conditions d'utilisation."
+                android:textSize="14sp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/aleo"
+                android:layout_marginEnd="10dp"
+                />
+
+            <ImageButton
+                android:id="@+id/info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/info"
+                android:background="@android:color/transparent"
+                android:layout_gravity="end|center_vertical"/>
+        </LinearLayout>
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnsinsc"

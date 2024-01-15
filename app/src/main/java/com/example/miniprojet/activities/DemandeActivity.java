@@ -45,7 +45,7 @@ public class DemandeActivity extends AppCompatActivity {
     private Uri contratFileUri;
     private Uri fiscaleFileUri;
     private Uri ribFileUri;
-    private ImageButton back;
+    private ImageButton back, declarationIcon;
     String selectedTypeIdentite;
     String selectedActivite;
     private FirebaseAuth firebaseAuth;
@@ -65,6 +65,15 @@ public class DemandeActivity extends AppCompatActivity {
         rib = findViewById(R.id.rib);
 
         declaration = findViewById(R.id.declaration);
+
+        declarationIcon = findViewById(R.id.info);
+        declarationIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent myintent = new Intent(DemandeActivity.this, DeclarationActivity.class);
+                startActivity(myintent);
+            }
+        });
 
         idntFile = findViewById(R.id.idntFile);
         idntFile.setOnClickListener(new View.OnClickListener() {

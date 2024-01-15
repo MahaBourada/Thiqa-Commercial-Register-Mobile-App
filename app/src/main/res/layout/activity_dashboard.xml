@@ -20,13 +20,39 @@
     android:layout_height="fill_parent"
     tools:context=".activities.DashboardActivity"
     android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        >
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="2"/>
 
-    <ImageView
-        android:layout_width="60dp"
-        android:layout_height="62.93dp"
-        android:src="@drawable/trustlogo_final"
-        android:layout_gravity="center"
-        android:layout_marginVertical="17dp"/>
+        <ImageView
+            android:layout_width="60dp"
+            android:layout_height="62.93dp"
+            android:src="@drawable/trustlogo_final"
+            android:layout_gravity="center"
+            android:layout_marginVertical="17dp"/>
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+
+        <ImageButton
+            android:id="@+id/logoutbtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/logout"
+            android:background="@android:color/transparent"
+            android:layout_marginVertical="21dp"
+            android:layout_marginHorizontal="21dp"
+            />
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -141,7 +167,7 @@
         android:layout_marginBottom="20dp"
         android:layout_gravity="bottom"
         android:background="@drawable/menu_background"
-        android:layout_marginHorizontal="20dp"
+        android:layout_marginHorizontal="40dp"
         android:paddingVertical="9dp">
 
         <ImageButton
@@ -177,22 +203,8 @@
             android:layout_height="wrap_content"
             android:src="@drawable/profile"
             android:contentDescription="Client support"
-            android:background="@android:color/transparent" />
-
-        <Space
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_weight="1"/>
-
-        <ImageButton
-            android:id="@+id/logoutbtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/logout"
-            android:contentDescription="Client support"
             android:background="@android:color/transparent"
             android:layout_marginEnd="10dp" />
-
 
     </LinearLayout>
 

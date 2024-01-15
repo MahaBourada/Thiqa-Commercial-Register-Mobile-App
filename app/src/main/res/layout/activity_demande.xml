@@ -287,19 +287,34 @@
         android:onClick="requestStoragePermission"
         android:textStyle="bold" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginTop="23dp">
+
     <CheckBox
         android:id="@+id/declaration"
-        android:layout_width="wrap_content"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:text="Je déclare que toutes les informations fournies sont exactes et complètes."
-        android:layout_marginTop="23dp"
+        android:text="Je déclare que toutes les informations fournies sont exactes et conformes aux conditions de création de registre de commerce."
         android:layout_gravity="center"
-        android:textSize="16sp"
+        android:textSize="14sp"
         android:textColor="@color/black"
-        android:layout_marginHorizontal="40dp"
-        android:paddingLeft="8dp"
         android:fontFamily="@font/aleo"
+        android:layout_marginEnd="10dp"
+        android:gravity="start"
     />
+
+        <ImageButton
+            android:id="@+id/info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/info"
+            android:background="@android:color/transparent"
+            android:layout_gravity="end|center_vertical" />
+    </LinearLayout>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/submitBtn"

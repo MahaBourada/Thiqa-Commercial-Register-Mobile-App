@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,11 +35,21 @@ public class SignUpActivity extends Activity {
     CheckBox termsCheckbox;
     FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
     DatabaseReference userRef;
+    ImageButton conditions;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
+
+        conditions = findViewById(R.id.info);
+        conditions.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent myintent = new Intent(SignUpActivity.this, ConditionsActivity.class);
+                startActivity(myintent);
+            }
+        });
 
         FirebaseApp.initializeApp(this);
 
