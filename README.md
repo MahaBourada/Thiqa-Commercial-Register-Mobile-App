@@ -4,11 +4,11 @@
 <h3>
   <b>Objective:</b> 
 </h3>
-<p>A mobile app that allows you to submit a request for a commercial register in order to have the necessary permissions to establish a business (According to algerian law).</p>
+<p>A mobile app that allows you to submit a request for a commercial register in order to have the necessary permissions to establish a business (According to Algerian law).</p>
 </li>
   
 <li><h4>
-  <b>Reasoning behind the name of the application:</b> 
+  <b>Meaning of the application's name:</b> 
 </h4>
 <p>"Thiqa / الثقة" or Trust in arabic, a token of trust and assurance in the realization of merchant/entrepreneurs' projects.</p>
 </li>
