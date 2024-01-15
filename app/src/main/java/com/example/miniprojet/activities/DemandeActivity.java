@@ -223,7 +223,7 @@ public class DemandeActivity extends AppCompatActivity {
                                         "En cours de traitement");
                                 demandesRef.child(demandeId).setValue(demandes);
 
-                                Toast.makeText(DemandeActivity.this, "Demande submitted successfully", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(DemandeActivity.this, "Demande enregistrée", Toast.LENGTH_SHORT).show();
 
                                 Handler handler = new Handler();
                                 handler.postDelayed(new Runnable() {
