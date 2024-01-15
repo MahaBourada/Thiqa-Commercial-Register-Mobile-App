@@ -44,7 +44,6 @@ public class CustomDemandeAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        Log.d("Debug", "TESTING");
         if (convertView == null) {
             convertView = LayoutInflater.from(context).inflate(R.layout.list_item_demande, parent, false);
         }

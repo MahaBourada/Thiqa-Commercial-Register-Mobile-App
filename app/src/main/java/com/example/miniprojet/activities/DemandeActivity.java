@@ -1,7 +1,15 @@
 package com.example.miniprojet.activities;
 
+import android.Manifest;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -17,6 +25,10 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
+import androidx.core.content.ContextCompat;
 
 import com.example.miniprojet.R;
 import com.example.miniprojet.model.Demandes;
@@ -49,12 +61,21 @@ public class DemandeActivity extends AppCompatActivity {
     String selectedTypeIdentite;
     String selectedActivite;
     private FirebaseAuth firebaseAuth;
-    private DatabaseReference usersRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_demande);
+
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            if (ContextCompat.checkSelfPermission(DemandeActivity.this, android.Manifest.permission.POST_NOTIFICATIONS) !=
+            PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(DemandeActivity.this, new String[]{android.Manifest.permission.POST_NOTIFICATIONS}, 101);
+            }
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.VIBRATE) == PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(DemandeActivity.this, new String[]{android.Manifest.permission.VIBRATE}, 101);
+            }
+        }
 
         FirebaseDatabase.getInstance();
 
@@ -208,7 +229,6 @@ public class DemandeActivity extends AppCompatActivity {
                                 demandesRef.child(demandeId).setValue(demandes);
 
                                 Toast.makeText(DemandeActivity.this, "Demande submitted successfully", Toast.LENGTH_SHORT).show();
-                                Log.d("Debug", "Demande submitted successfully " + demandeId + " USER ID " + userId);
 
                                 Handler handler = new Handler();
                                 handler.postDelayed(new Runnable() {
@@ -220,7 +240,9 @@ public class DemandeActivity extends AppCompatActivity {
                                         // Update the etat in the Firebase database
                                         demandesRef.child(demandeId).child("etat").setValue(newEtat);
 
-                                        Log.d("Debug", "Etat updated to: " + newEtat);
+                                        sendNotification(newEtat, widgetToString(nomEntreprise));
+
+                                        Log.d("Debug", "Notification sent with etat: " + newEtat + widgetToString(nomEntreprise));
                                     }
                                 }, 10000); // 10 seconds delay
 
@@ -277,9 +299,8 @@ public class DemandeActivity extends AppCompatActivity {
                     ribFileUri = uri;
                     break;
             }
-            Toast.makeText(this, "Fichier enregistré!", Toast.LENGTH_SHORT).show();
         } else {
-            Toast.makeText(this, "Erreur: Veuillez réessayez", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Erreur: Veuillez ré-inserer le fichier", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -295,6 +316,49 @@ public class DemandeActivity extends AppCompatActivity {
         }
     }
 
+    private void sendNotification(String newEtat, String companyName) {
+        Log.d("Debug", "TESTING NOTIFICATIONS");
+
+        String channelID = "CHANNEL_ID_NOTIFICATION";
+        String title = "Résultat de traitement de demande";
+        String etatNotification = newEtat.trim().equals("Demande acceptée") ? "acceptée" : "refusée";
+        String body = "Votre demande pour \"" + companyName + "\" a été " +  etatNotification;
+
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(getApplicationContext(), channelID)
+                .setSmallIcon(R.drawable.trustlogo_final)
+                .setContentTitle(title)
+                .setContentText(body)
+                .setStyle(new NotificationCompat.BigTextStyle().bigText(body))
+                .setAutoCancel(true)
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT);
+
+        Intent intent = new Intent(getApplicationContext(), DashboardActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
+        PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(), 0, intent, PendingIntent.FLAG_MUTABLE);
+
+        builder.setContentIntent(pendingIntent);
+        NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        
+        if(android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            NotificationChannel notificationChannel = null;
+                notificationChannel = notificationManager.getNotificationChannel(channelID);
+
+            if(notificationChannel == null) {
+                int importance = NotificationManager.IMPORTANCE_HIGH;
+                notificationChannel = new NotificationChannel(channelID, "Some description", importance);
+                notificationChannel.setLightColor(Color.GREEN);
+                notificationChannel.enableVibration(true);
+                notificationManager.createNotificationChannel(notificationChannel);
+            }
+        }
+
+
+        Log.d("Debug", "TESTING NOTIFICATIONS" + notificationManager);
+
+        notificationManager.notify(0, builder.build());
+    }
+
     private void handleValidationError(String errorMessage, View focusedView) {
         Toast.makeText(getBaseContext(), errorMessage, Toast.LENGTH_SHORT).show();
         if (focusedView instanceof EditText) {
@@ -303,7 +367,7 @@ public class DemandeActivity extends AppCompatActivity {
     }
 
     public String widgetToString (EditText field) {
-        return field.getText().toString();
+        return field.getText().toString().trim();
     }
 
 }
