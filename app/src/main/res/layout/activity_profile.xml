@@ -64,8 +64,7 @@
                 android:textColor="@color/black"
                 android:fontFamily="@font/aleo"
                 android:background="@drawable/input_background"
-                android:paddingHorizontal="20dp"
-                android:paddingVertical="15dp"
+                android:padding="15dp"
                 android:textStyle="bold"
                 />
 
@@ -91,8 +90,7 @@
                 android:textColor="@color/black"
                 android:fontFamily="@font/aleo"
                 android:background="@drawable/input_background"
-                android:paddingHorizontal="20dp"
-                android:paddingVertical="15dp"
+                android:padding="15dp"
                 android:textStyle="bold"
                 />
 
@@ -118,8 +116,7 @@
                 android:textColor="@color/black"
                 android:fontFamily="@font/aleo"
                 android:background="@drawable/input_background"
-                android:paddingHorizontal="20dp"
-                android:paddingVertical="15dp"
+                android:padding="15dp"
                 android:textStyle="bold"
                 />
 
@@ -145,8 +142,7 @@
                 android:textColor="@color/black"
                 android:fontFamily="@font/aleo"
                 android:background="@drawable/input_background"
-                android:paddingHorizontal="20dp"
-                android:paddingVertical="15dp"
+                android:padding="15dp"
                 android:textStyle="bold"
                 />
 

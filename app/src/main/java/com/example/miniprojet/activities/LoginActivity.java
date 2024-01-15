@@ -69,6 +69,12 @@ public class LoginActivity extends AppCompatActivity {
                     Toast.makeText(LoginActivity.this, "Veuillez entrer un e-mail", Toast.LENGTH_SHORT).show();
                     return;
                 }
+
+                if (!isValidEmail(email)) {
+                    Toast.makeText(LoginActivity.this, "Veuillez entrer une adresse e-mail valide", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
                 if (TextUtils.isEmpty(password)) {
                     Toast.makeText(LoginActivity.this, "Veuillez entrer un mot de passe", Toast.LENGTH_SHORT).show();
                     return;
@@ -89,7 +95,7 @@ public class LoginActivity extends AppCompatActivity {
                             startActivity(i);
                         } else {
                             Log.w(TAG, "signInWithEmail:failure", task.getException());
-                            Toast.makeText(LoginActivity.this, "Authentification échouée: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(LoginActivity.this, "E-mail ou mot de passe erronés", Toast.LENGTH_SHORT).show();
                             Exception exception = task.getException();
                             if (exception != null) {
                                 String errorMessage = exception.getMessage();
@@ -100,5 +106,11 @@ public class LoginActivity extends AppCompatActivity {
                 });
             }
         });
+    }
+
+    private boolean isValidEmail(String email) {
+        // Use a regex pattern for basic email validation
+        String emailRegex = "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Z|a-z]{2,}$";
+        return email.matches(emailRegex);
     }
 }

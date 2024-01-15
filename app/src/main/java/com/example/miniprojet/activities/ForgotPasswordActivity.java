@@ -46,26 +46,33 @@ public class ForgotPasswordActivity extends Activity {
         });
     }
 
+    private boolean isValidEmail(String email) {
+        // Use a regex pattern for basic email validation
+        String emailRegex = "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Z|a-z]{2,}$";
+        return email.matches(emailRegex);
+    }
+
 
     private void resetPassword() {
         String email = forgotEmail.getText().toString().trim();
 
         if (TextUtils.isEmpty(email)) {
-            Toast.makeText(getApplicationContext(), "Veuillez entrer votre adresse e-mail!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Veuillez entrer votre adresse e-mail", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        firebaseAuth.sendPasswordResetEmail(email)
-                .addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if (task.isSuccessful()) {
-                            Toast.makeText(ForgotPasswordActivity.this, "Nous vous avons envoyé des instructions pour réinitialiser votre mot de passe!", Toast.LENGTH_SHORT).show();
-                        } else {
-                            Toast.makeText(ForgotPasswordActivity.this, "Échec de l'envoi des instructions. Veuillez vérifier votre adresse e-mail!", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
+        firebaseAuth.sendPasswordResetEmail(email).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if (!isValidEmail(email)) {
+                    Toast.makeText(ForgotPasswordActivity.this, "Veuillez entrer une adresse e-mail valide", Toast.LENGTH_SHORT).show();
+                } else if (task.isSuccessful()) {
+                    Toast.makeText(ForgotPasswordActivity.this, "Nous vous avons envoyé des instructions pour réinitialiser votre mot de passe!", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(ForgotPasswordActivity.this, "Échec de l'envoi des instructions. Veuillez vérifier votre adresse e-mail", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
 
 }

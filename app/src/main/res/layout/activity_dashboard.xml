@@ -69,7 +69,7 @@
                 android:layout_height="wrap_content"
                 android:text="nom"
                 android:textSize="26sp"
-                android:layout_marginStart="2dp"
+                android:layout_marginStart="5dp"
                 android:textColor="@color/black"
                 android:fontFamily="@font/aleo"
                 android:textStyle="bold"
