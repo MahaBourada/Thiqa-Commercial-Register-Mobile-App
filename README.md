@@ -48,8 +48,16 @@ https://github.com/MahaBourada/Thiqa-Commercial-Register-Mobile-App/assets/12919
   </li>
   <li><h2>View a request</h2>
 
+
+https://github.com/MahaBourada/Thiqa-Commercial-Register-Mobile-App/assets/129193860/495418aa-a5fe-4101-b138-e0bffeda1dad
+
+
   </li>
   <li><h2>FAQ & Client support</h2>
+
+
+https://github.com/MahaBourada/Thiqa-Commercial-Register-Mobile-App/assets/129193860/938976ca-6920-455d-a8e1-b2c0bd1744ec
+
 
   </li>
     </li>
